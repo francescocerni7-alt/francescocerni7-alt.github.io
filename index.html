@@ -1,0 +1,1658 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Personal Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital@0;1&family=Space+Grotesk:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a1a1a;
+            --secondary: #4a4a4a;
+            --light: #f5f5f5;
+            --accent: #d4af37;
+            --serif: 'Crimson Text', serif;
+            --sans: 'Space Grotesk', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #ffffff;
+            color: var(--primary);
+            font-family: var(--sans);
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        /* Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+            z-index: 1000;
+            padding: 1.5rem 2rem;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--serif);
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            text-decoration: none;
+            color: var(--primary);
+        }
+
+        .logo-image {
+            height: 30px;
+            /* controlla l’altezza */
+            width: auto;
+            opacity: 0.85;
+            /* effetto elegante */
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--secondary);
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #fafaf8 0%, #f5f5f5 100%);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-text h1 {
+            font-family: var(--serif);
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+            color: var(--primary);
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .hero-image {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 8px;
+            animation: imageSlide 0.8s ease-out;
+        }
+
+        @keyframes imageSlide {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .hero-image-caption {
+            margin-top: 0.75rem;
+            font-size: 0.9rem;
+            color: var(--secondary);
+            text-align: center;
+            font-style: italic;
+        }
+
+
+        .cta-button {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 0.9rem 2.2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border: 2px solid var(--primary);
+        }
+
+        .cta-button:hover {
+            background: transparent;
+            color: var(--primary);
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            color: var(--primary);
+            margin-left: 1rem;
+        }
+
+        .cta-button.secondary:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* About Section */
+        .about {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about h2 {
+            font-family: var(--serif);
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .about-content p {
+            font-size: 1rem;
+            color: var(--secondary);
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Portfolio/Products Section */
+        .portfolio {
+            padding: 5rem 2rem;
+            background: var(--light);
+        }
+
+        .portfolio-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .portfolio h2 {
+            font-family: var(--serif);
+            font-size: 2.2rem;
+            margin-bottom: 3rem;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+        }
+
+        .portfolio-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+
+        .portfolio-item {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            animation: itemFade 0.6s ease-out backwards;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 400px;
+        }
+
+        @keyframes itemFade {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .portfolio-item:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .portfolio-item:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .portfolio-item:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .portfolio-item:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .portfolio-item:hover {
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Carousel Styles */
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #e0e0e0 0%, #f0f0f0 100%);
+            overflow: hidden;
+        }
+
+        .carousel-track {
+            display: flex;
+            height: 100%;
+            transition: transform 0.4s ease;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .portfolio-item:hover .carousel-slide img {
+            transform: scale(1.05);
+        }
+
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 1rem 0.75rem;
+            cursor: pointer;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .carousel-nav:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        .carousel-prev {
+            left: 0;
+        }
+
+        .carousel-next {
+            right: 0;
+        }
+
+        .carousel-indicators {
+            position: absolute;
+            bottom: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 0.5rem;
+            z-index: 10;
+        }
+
+        .carousel-dot {
+            width: 0.6rem;
+            height: 0.6rem;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            padding: 0;
+        }
+
+        .carousel-dot.active {
+            background: white;
+            width: 1.5rem;
+            border-radius: 0.3rem;
+        }
+
+        .carousel-dot:hover {
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        .carousel-image-count {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            z-index: 10;
+        }
+
+        .portfolio-content {
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .portfolio-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--accent);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .portfolio-item h3 {
+            font-family: var(--serif);
+            font-size: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: var(--primary);
+            letter-spacing: -0.3px;
+        }
+
+        .portfolio-item p {
+            font-size: 0.95rem;
+            color: var(--secondary);
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .portfolio-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+        }
+
+        .portfolio-link:hover {
+            gap: 0.5rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 5rem 2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-family: var(--serif);
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+        }
+
+        .contact p {
+            font-size: 1rem;
+            color: var(--secondary);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .contact-cta {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-cta:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+        }
+
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 2rem;
+                margin-top: 100px;
+            }
+
+            .hero-text h1 {
+                font-size: 2.2rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .portfolio-item {
+                grid-template-columns: 1fr;
+                min-height: auto;
+            }
+
+            .carousel-container {
+                height: 300px;
+            }
+
+            .portfolio-content {
+                padding: 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .carousel-nav {
+                padding: 0.75rem 0.5rem;
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            text-align: center;
+            color: var(--secondary);
+            font-size: 0.85rem;
+            padding-bottom: 2rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* My Story Section - Flip Cards */
+        .story-title {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .story-toggle {
+            all: unset;
+            font-family: var(--serif);
+            font-size: 2.2rem;
+            letter-spacing: -0.5px;
+            color: var(--primary);
+            cursor: default;
+        }
+
+        .story-cards-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            perspective: 1000px;
+            max-width: 1200px;
+            margin: 20px auto;
+        }
+
+        .flip-card {
+            background-color: transparent;
+            width: 100%;
+            height: 100%;
+            aspect-ratio: 1 / 1;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .flip-card:hover {
+            transform: scale(1.05);
+            transition: transform 0.3s ease;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            transform-style: preserve-3d;
+            -webkit-transform-style: preserve-3d;
+        }
+
+        .flip-card.flipped .flip-card-inner {
+            transform: rotateY(180deg);
+            -webkit-transform: rotateY(180deg);
+        }
+
+        .flip-card-front,
+        .flip-card-back {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            -moz-backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .flip-card-front {
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: #e8e8e8;
+            color: white;
+            font-weight: 600;
+            font-size: 1.3rem;
+            text-align: center;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        /* Overlay opzionale per le immagini */
+        .flip-card-front::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            z-index: 1;
+        }
+
+        .flip-card-front {
+            z-index: 0;
+        }
+
+        .flip-card-front::after {
+            content: attr(data-title);
+            position: relative;
+            z-index: 2;
+        }
+
+        .flip-card-back {
+            background: white;
+            transform: rotateY(180deg);
+            -webkit-transform: rotateY(180deg);
+            overflow-y: auto;
+            padding: 2rem;
+            justify-content: flex-start;
+            align-items: flex-start;
+            padding-top: 1.5rem;
+        }
+
+        .flip-card-back h3 {
+            font-family: var(--serif);
+            font-size: 1.5rem;
+            margin-bottom: 0.8rem;
+            margin-top: 0;
+            color: var(--primary);
+            letter-spacing: -0.3px;
+            text-align: center;
+            width: 100%;
+        }
+
+        .flip-card-back p {
+            font-size: 0.95rem;
+            color: var(--secondary);
+            line-height: 1.7;
+            text-align: left;
+            margin: 0;
+            width: 100%;
+        }
+
+        .flip-card-back .story-label {
+            font-size: 0.8rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.8rem;
+            margin-top: 0;
+            font-weight: 600;
+            text-align: center;
+            width: 100%;
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .story-cards-container {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                max-width: 100%;
+            }
+
+            .flip-card {
+                aspect-ratio: 1 / 1;
+            }
+
+            .flip-card-back {
+                padding: 1.5rem;
+            }
+
+            .flip-card-back h3 {
+                font-size: 1.3rem;
+                margin-bottom: 0.6rem;
+            }
+
+            .flip-card-back p {
+                font-size: 0.9rem;
+            }
+        }
+
+        .video-card {
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .video-card video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        .video-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.35);
+            z-index: 1;
+        }
+
+        .video-card .video-title {
+            position: relative;
+            z-index: 2;
+            color: white;
+            font-size: 1.3rem;
+            font-weight: 600;
+            text-align: center;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+        }
+
+
+        /* Featured Work – clickable title */
+        .work-title {
+            margin-bottom: 3rem;
+        }
+
+        .work-toggle {
+            all: unset;
+            display: inline-flex;
+            align-items: baseline;
+            gap: 0.75rem;
+            cursor: pointer;
+            font-family: var(--serif);
+            font-size: 2.2rem;
+            letter-spacing: -0.5px;
+            color: var(--primary);
+        }
+
+        .work-toggle:hover .work-chevron {
+            transform: translateY(-1px);
+        }
+
+        .work-chevron {
+            font-size: 1.1rem;
+            color: var(--secondary);
+            opacity: 0.7;
+            transition: transform 0.35s ease, opacity 0.35s ease;
+        }
+
+        /* Collapsible portfolio */
+        .portfolio-grid.collapsed {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(-8px);
+            transition:
+                max-height 1s cubic-bezier(0.25, 0.8, 0.25, 1),
+                opacity 0.6s ease,
+                transform 0.6s ease;
+        }
+
+        .portfolio-grid.expanded {
+            max-height: 6000px;
+            /* tanto, ci sono le card */
+            opacity: 1;
+            transform: translateY(0);
+            transition:
+                max-height 1s cubic-bezier(0.25, 0.8, 0.25, 1),
+                opacity 0.6s ease,
+                transform 0.6s ease;
+        }
+
+        /* Chevron rotation */
+        .work-toggle[aria-expanded="true"] .work-chevron {
+            transform: rotate(90deg);
+            opacity: 0.9;
+        }
+
+        /* Hero profile carousel – centering fix */
+        .hero-carousel .carousel-slide {
+            display: flex;
+            align-items: center;
+            /* centro verticale */
+            justify-content: center;
+            /* centro orizzontale */
+        }
+
+        .hero-carousel .carousel-slide img {
+            max-height: 420px;
+            /* scegli tu: 380–450px */
+            width: auto;
+            object-fit: contain;
+        }
+
+        /* Hero profile carousel – fixed frame */
+        .hero-carousel {
+            width: 100%;
+            max-width: 420px;
+            /* controlla la larghezza visiva */
+            height: 420px;
+            /* controlla l’altezza */
+            margin: 0 auto;
+            /* centra il frame */
+        }
+
+
+        .hero-carousel .carousel-slide img {
+            transition: opacity 0.3s ease;
+        }
+
+        /* === HERO carousel: smoother slide motion === */
+        .hero-carousel .carousel-track {
+            transition: transform 0.65s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .hero-carousel .carousel-slide img {
+            transition: transform 0.65s cubic-bezier(0.25, 0.8, 0.25, 1),
+                opacity 0.65s ease;
+        }
+
+        /* === Caption animation === */
+        .hero-image-caption.dynamic {
+            transition: opacity 0.35s ease, transform 0.35s ease;
+        }
+
+        .hero-image-caption.fade-out {
+            opacity: 0;
+            transform: translateY(6px);
+        }
+
+        /* === Product Case Study Style === */
+
+        .product-case {
+            gap: 1.4rem;
+        }
+
+        .product-title {
+            font-family: var(--serif);
+            font-size: 2rem;
+            letter-spacing: -0.5px;
+            margin-bottom: 0.2rem;
+        }
+
+        .product-role {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            color: var(--accent);
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+        }
+
+        .product-description {
+            font-size: 1.05rem;
+            color: var(--secondary);
+            margin-bottom: 2rem;
+            max-width: 420px;
+        }
+
+        .product-metrics {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .metric-value {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .metric-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--secondary);
+        }
+
+        .product-achievements h4 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            margin-bottom: 0.8rem;
+            color: var(--primary);
+        }
+
+        .product-achievements ul {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 2rem;
+        }
+
+        .product-achievements li {
+            position: relative;
+            padding-left: 1.4rem;
+            margin-bottom: 0.6rem;
+            font-size: 0.95rem;
+            color: var(--secondary);
+        }
+
+        .product-achievements li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .product-cta {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            width: fit-content;
+        }
+
+        .product-cta:hover {
+            background: var(--accent);
+        }
+
+        /* === Product metrics dividers (editorial style) === */
+
+        .product-metrics {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            padding: 2rem 0;
+            margin: 2.5rem 0;
+
+            border-top: 1px solid rgba(0, 0, 0, 0.08);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+        }
+
+        .product-metrics .metric {
+            padding: 0 1.5rem;
+        }
+
+        /* Vertical dividers between metrics */
+        .product-metrics .metric:not(:last-child) {
+            border-right: 1px solid rgba(0, 0, 0, 0.08);
+        }
+
+        /* Slightly stronger metric number */
+        .metric-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        /* Label spacing refinement */
+        .metric-label {
+            margin-top: 0.3rem;
+        }
+
+        .portfolio-content .product-role {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            color: var(--accent);
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav>
+            <a href="#" class="logo">
+                Giuseppe Pisante
+                <img src="Panarea.jpeg" alt="Signature landscape" class="logo-image">
+            </a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#portfolio">Work</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-text">
+            <h1>Hi, I am Giuseppe Pisante</h1>
+            <p>I am passionate about product, due to its intrinsic multi-perspective nature. With 2.5 years of
+                experience, I have served as Italy Country Manager at SQUID, where I have developed SQUID app and
+                pioneered SQUID Business app. On the side, I have participated to an AI Google hackathon as Product
+                specialist and reached the final with the Edvige product. To fill my technical gaps, I have graduated
+                cum laude in Computer Science and Engineering.</p>
+            <p>I am always reflecting on how to improve, but when I am not in the office you can find me in the middle
+                of the sea sailing, on top of a mountain ski touring or chilling with good music and aperol spritz.</p>
+            <div style="margin-top: 2rem;">
+                <a href="#contact" class="cta-button">Get In Touch</a>
+                <a href="#portfolio" class="cta-button secondary">See My Work</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="carousel-container hero-carousel">
+                <div class="carousel-track" style="transform: translateX(0%);">
+
+                    <div class="carousel-slide" data-caption="Me happy in the SQUID Stockholm HQ">
+                        <img src="https://media.licdn.com/dms/image/v2/C4D03AQHuz84oMhSuPw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1662473938843?e=1771459200&v=beta&t=HAOAXo11f-1T__QuYCbDF6dUcW0EjIkywF1Hd2WpuuA"
+                            alt="Profile 1">
+                    </div>
+
+                    <div class="carousel-slide" data-caption="Me happy sailing">
+                        <img src="./vela.png" alt="Profile 2">
+                    </div>
+
+                    <div class="carousel-slide" data-caption="Me happy ski touring">
+                        <img src="./sci.png" alt="Profile 3">
+                    </div>
+
+                </div>
+
+                <button class="carousel-nav carousel-prev" data-carousel-index="3">❮</button>
+                <button class="carousel-nav carousel-next" data-carousel-index="3">❯</button>
+
+                <div class="carousel-image-count">
+                    <span class="current-index">1</span> / <span class="total-images">3</span>
+                </div>
+
+                <div class="carousel-indicators">
+                    <button class="carousel-dot active" data-slide="0" data-carousel-index="3"></button>
+                    <button class="carousel-dot" data-slide="1" data-carousel-index="3"></button>
+                    <button class="carousel-dot" data-slide="2" data-carousel-index="3"></button>
+                </div>
+            </div>
+
+            <!-- caption dinamica -->
+            <p class="hero-image-caption dynamic">Me happy in the SQUID Stockholm HQ</p>
+        </div>
+
+
+    </section>
+
+    <!-- My Story Section - Flip Cards -->
+    <section class="about" id="about">
+        <h2 class="story-title">
+            <span class="story-toggle">My Professional Story</span>
+        </h2>
+
+        <div class="story-cards-container">
+            <!-- Card 1: Understanding Perspectives -->
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <!-- MODIFICA: Sostituisci './images/chapter1.jpg' con il percorso della tua immagine -->
+                    <div class="flip-card-front" style="background-image: url('./rettoratoPoli.jpg');">
+                        <span>1. Curiosity Driven</span>
+                    </div>
+                    <div class="flip-card-back">
+                        <span class="story-label">Chapter One</span>
+                        <h3>Understanding Perspectives</h3>
+                        <p>From an early age, I have been fascinated by the idea that multiple perspectives exist and
+                            that these different viewpoints can coexist to make our world better. To understand all
+                            these perspectives, I have tried to remain as open-minded as possible and explore new
+                            experiences. I began by pursuing a deeper understanding of the technical side of things, so
+                            I started studying mechanical engineering. Although not my true passion, I learned how to
+                            engage with rigorous and analytical individuals and to work diligently on subjects that
+                            didn't fully captivate me.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2: SQUID & Product Discovery -->
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <!-- MODIFICA: Sostituisci './images/chapter2.jpg' con il percorso della tua immagine -->
+                    <div class="flip-card-front" style="background-image: url('./ufficio.png');">
+                        <span>2. Product Discovery</span>
+                    </div>
+                    <div class="flip-card-back">
+                        <span class="story-label">Chapter Two</span>
+                        <h3>SQUID Journey Begins</h3>
+                        <p>Unsatisfied with my studies and seeking a different environment, I discovered SQUID as an
+                            opportunity to learn from a new angle. At SQUID, I started supervising the SQUID app, a news
+                            aggregator active in more than 60 countries globally. My role focused on content supervision
+                            and managing partnerships with publishing partners. I gradually transitioned into product
+                            management, working closely with the development team to improve user experience and
+                            retention. After 1.3 years, I had developed clear ideas about the product's direction, and
+                            to fully commit to product development, I decided to relocate to the Stockholm headquarters.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3: Leadership & Growth -->
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <!-- MODIFICA: Sostituisci './images/chapter3.jpg' con il percorso della tua immagine -->
+                    <div class="flip-card-front" style="background-image: url('./Corrieredellasera.png');">
+                        <span>3. Leading Growth</span>
+                    </div>
+                    <div class="flip-card-back">
+                        <span class="story-label">Chapter Three</span>
+                        <h3>Country Manager Era</h3>
+                        <p>After one year working part-time in Milan, I was promoted to full-time Italy Country Manager,
+                            with the mission to scale the Italian team from 2 to 7 people. I was also tasked with
+                            building the SQUID Business app from the ground up for the Italian market: establishing its
+                            identity, mission, go-to-market strategy, and growth plan. Over these 2.5 years, I realized
+                            I lacked the computer science skills necessary to follow development closely. This gap
+                            motivated me to pursue a master's degree in High Performance Computing Engineering, with a
+                            major in computer science and AI.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4: Technical Mastery & AI -->
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <!-- MODIFICA: Sostituisci './images/chapter4.jpg' con il percorso della tua immagine -->
+                    <div class="flip-card-front" style="background-image: url('./Laurea.jpeg');">
+                        <span>4. Technical Excellence</span>
+                    </div>
+                    <div class="flip-card-back">
+                        <span class="story-label">Chapter Four</span>
+                        <h3>Master's & AI Innovation</h3>
+                        <p>Starting with limited foundational knowledge, I committed two years to mastering the
+                            fundamentals of computer science, programming, data structures, algorithms, machine
+                            learning, and AI. Right before graduation, I tested my abilities at the Google AI Hackathon,
+                            where my team reached the final (top 4 out of 60), with Edvige—an AI-powered agent that can
+                            increase knowledge worker productivity by up to 8 hours per week. I believe what
+                            distinguished our team was the product's clear identity, thoughtful design, and compelling
+                            mission that resonated with the judges.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio" id="portfolio">
+        <div class="portfolio-container">
+
+            <h2 class="work-title">
+                <button class="work-toggle" type="button" aria-expanded="false" aria-controls="work-content">
+                    <span>Featured Work</span>
+                    <span class="work-chevron" aria-hidden="true">↘</span>
+                </button>
+            </h2>
+
+            <div class="portfolio-grid collapsed" id="work-content">
+                <!-- SQUID Business Project -->
+                <div class="portfolio-item">
+                    <div class="carousel-container">
+                        <div class="carousel-track" style="transform: translateX(0%);">
+                            <div class="carousel-slide">
+                                <img src="https://play-lh.googleusercontent.com/j8yZVEVGr-fbkksQvZI6Y9EJ-rTJuyzFTvwCgN_lyUSrsOeuax2d3s-6sS6lnDG-s9ck=w5120-h2880-rw"
+                                    alt="SQUID Business - Main">
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="./squid business 3.jpg" alt="SQUID Business - Feature">
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="./squid business 2.jpg" alt="SQUID Business - UI">
+                            </div>
+                        </div>
+                        <button class="carousel-nav carousel-prev" data-carousel-index="0">❮</button>
+                        <button class="carousel-nav carousel-next" data-carousel-index="0">❯</button>
+                        <div class="carousel-image-count">
+                            <span class="current-index">1</span> / <span class="total-images">3</span>
+                        </div>
+                        <div class="carousel-indicators">
+                            <button class="carousel-dot active" data-slide="0" data-carousel-index="0"></button>
+                            <button class="carousel-dot" data-slide="1" data-carousel-index="0"></button>
+                            <button class="carousel-dot" data-slide="2" data-carousel-index="0"></button>
+                        </div>
+                    </div>
+                    <div class="portfolio-content product-case">
+
+                        <h3 class="product-title">SQUID Business</h3>
+                        <p class="product-role">Italy Country Manager & Squid Business Lead</p>
+
+                        <p class="product-description">
+                            Premium news aggregator for financial & geopolitical intelligence
+                        </p>
+
+                        <div class="product-metrics">
+                            <div class="metric">
+                                <span class="metric-value">9K</span>
+                                <span class="metric-label">Beta users</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">55%</span>
+                                <span class="metric-label">Day-30 retention</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">5.6%</span>
+                                <span class="metric-label">Push CTR</span>
+                            </div>
+                        </div>
+
+                        <div class="product-achievements">
+                            <h4>Key achievements</h4>
+                            <ul>
+                                <li>Designed and developed from the ground up</li>
+                                <li>+3.1% article CTR via A/B testing</li>
+                                <li>Featured in MF Milano Finanza & Corriere della Sera</li>
+                            </ul>
+                        </div>
+
+                        <a href="https://play.google.com/store/apps/details?id=co.squidapp.squidpremium"
+                            class="product-cta">
+                            View on App Store →
+                        </a>
+
+                    </div>
+                </div>
+
+                <!-- Edvige Project -->
+                <div class="portfolio-item">
+                    <div class="carousel-container">
+                        <div class="carousel-track" style="transform: translateX(0%);">
+                            <div class="carousel-slide">
+                                <img src="./Edvige.png" alt="Edvige - Main">
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="./Edvige2.png" alt="Edvige - Dashboard">
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="./Edvige3.png" alt="Edvige - Analytics">
+                            </div>
+                        </div>
+                        <button class="carousel-nav carousel-prev" data-carousel-index="1">❮</button>
+                        <button class="carousel-nav carousel-next" data-carousel-index="1">❯</button>
+                        <div class="carousel-image-count">
+                            <span class="current-index">1</span> / <span class="total-images">3</span>
+                        </div>
+                        <div class="carousel-indicators">
+                            <button class="carousel-dot active" data-slide="0" data-carousel-index="1"></button>
+                            <button class="carousel-dot" data-slide="1" data-carousel-index="1"></button>
+                            <button class="carousel-dot" data-slide="2" data-carousel-index="1"></button>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <div class="portfolio-label">Edvige</div>
+                        <h3>AI Flow Recovery for Developers</h3>
+                        <p>
+                            Developers lose focus after interruptions (meetings, calls, context switches): 69% waste 8+
+                            hours/week. Edvige helps
+                            restore the workflow in minutes with a contextual dashboard (current task state, relevant
+                            code snippets, prior AI
+                            chats) and gives managers hard numbers on inefficiency and cost (per project + overall) to
+                            reduce unnecessary
+                            interruptions and improve team throughput.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- SQUID News App Project -->
+                <div class="portfolio-item">
+                    <div class="carousel-container">
+                        <div class="carousel-track" style="transform: translateX(0%);">
+                            <div class="carousel-slide">
+                                <img src="./squid.jpg" alt="SQUID - Main">
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="./squid 2.jpg" alt="SQUID - Feed">
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="./squid 3.jpg" alt="SQUID - Categories">
+                            </div>
+                        </div>
+                        <button class="carousel-nav carousel-prev" data-carousel-index="2">❮</button>
+                        <button class="carousel-nav carousel-next" data-carousel-index="2">❯</button>
+                        <div class="carousel-image-count">
+                            <span class="current-index">1</span> / <span class="total-images">3</span>
+                        </div>
+                        <div class="carousel-indicators">
+                            <button class="carousel-dot active" data-slide="0" data-carousel-index="2"></button>
+                            <button class="carousel-dot" data-slide="1" data-carousel-index="2"></button>
+                            <button class="carousel-dot" data-slide="2" data-carousel-index="2"></button>
+                        </div>
+                    </div>
+                    <div class="portfolio-content product-case">
+
+                        <h3 class="product-title">SQUID Business</h3>
+                        <p class="product-role">Part-time Italy Country Manager</p>
+
+                        <p class="product-description">
+                            Premium news aggregator for financial & geopolitical intelligence
+                        </p>
+
+                        <div class="product-metrics">
+                            <div class="metric">
+                                <span class="metric-value">40K</span>
+                                <span class="metric-label">DAU</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">90K</span>
+                                <span class="metric-label">WAU</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">180K</span>
+                                <span class="metric-label">MAU</span>
+                            </div>
+                        </div>
+
+                        <div class="product-achievements">
+                            <h4>Key achievements</h4>
+                            <ul>
+                                <li>Increased MAU by 15%</li>
+                                <li>+1.5% push notification CTR via A/B testing</li>
+                                <li>+11% retention by improving onboarding through funnel analysis</li>
+                            </ul>
+                        </div>
+
+                        <a href="https://play.google.com/store/apps/details?id=co.squidapp.squid&hl=en"
+                            class="product-cta">
+                            View on App Store →
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <h2 class="story-title">
+        <span class="story-toggle">Passions and competitive sports</span>
+    </h2>
+
+    <div class="story-cards-container">
+        <!-- Card 1:-->
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <!-- MODIFICA: Sostituisci './images/chapter4.jpg' con il percorso della tua immagine -->
+                <div class="flip-card-front video-card">
+                    <video src="./bagno a stoccolma.mp4" autoplay muted loop playsinline>
+                    </video>
+                    <span class="video-title">New cultures & experiences</span>
+                </div>
+                <div class="flip-card-back">
+                    <span class="story-label">Chapter Four</span>
+                    <h3>Master's & AI Innovation</h3>
+                    <p>
+
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 2: SQUID & Product Discovery -->
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <!-- MODIFICA: Sostituisci './images/chapter2.jpg' con il percorso della tua immagine -->
+                <div class="flip-card-front video-card">
+                    <video src="./io a vela.mp4" autoplay muted loop playsinline>
+                    </video>
+                    <span class="video-title">Competitive sailing</span>
+                </div>
+
+                <div class="flip-card-back">
+                    <span class="story-label">Chapter Two</span>
+                    <h3>SQUID Journey Begins</h3>
+                    <p>
+
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 3: Leadership & Growth -->
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <!-- MODIFICA: Sostituisci './images/chapter3.jpg' con il percorso della tua immagine -->
+                <div class="flip-card-front video-card">
+                    <video src="./skitouring.mp4" autoplay muted loop playsinline>
+                    </video>
+                    <span class="video-title">Ski-touring</span>
+                </div>
+                <div class="flip-card-back">
+                    <span class="story-label">Chapter Three</span>
+                    <h3>Country Manager Era</h3>
+                    <p>
+
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 4: Technical Mastery & AI -->
+         <div class="flip-card">
+            <div class="flip-card-inner">
+                <!-- MODIFICA: Sostituisci './images/chapter1.jpg' con il percorso della tua immagine -->
+                <div class="flip-card-front video-card">
+                    <video src="./panawellness.mp4" autoplay muted loop playsinline>
+                    </video>
+                    <span class="video-title">Friends, music & Spritz</span>
+                </div>
+                <div class="flip-card-back">
+                    <span class="story-label">Chapter One</span>
+                    <h3>Understanding Perspectives</h3>
+                    <p>
+
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    </section>
+
+
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <h2>Let's Talk</h2>
+        <p>I am looking forward to meeting new people and exploring new opportunities in product management and
+            development.</p>
+        <a href="/cdn-cgi/l/email-protection#ee899e879d8f809a8bdedfae89838f8782c08d8183" class="contact-cta">Send Me an
+            Email</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Giuseppe Pisante. All rights reserved.</p>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script>
+        // Carousel functionality
+        const carousels = document.querySelectorAll('.carousel-container');
+        const carouselStates = new Map();
+
+        carousels.forEach((carousel, index) => {
+            const track = carousel.querySelector('.carousel-track');
+            const slides = carousel.querySelectorAll('.carousel-slide');
+            const dots = carousel.querySelectorAll('.carousel-dot');
+            const totalImages = slides.length;
+
+            carouselStates.set(index, {
+                currentIndex: 0,
+                totalSlides: totalImages,
+                track: track,
+                slides: slides,
+                dots: dots
+            });
+
+            carousel.dataset.carouselIndex = index;
+
+            carousel.querySelectorAll('.carousel-prev, .carousel-next').forEach(btn => {
+                btn.dataset.carouselIndex = index;
+            });
+
+            carousel.querySelectorAll('.carousel-dot').forEach(dot => {
+                dot.dataset.carouselIndex = index;
+            });
+
+            // Update total images count
+            carousel.querySelector('.total-images').textContent = totalImages;
+        });
+
+        // Navigate carousel
+        function navigateCarousel(carouselIndex, direction) {
+            const state = carouselStates.get(carouselIndex);
+            if (!state) return;
+
+            let newIndex = state.currentIndex + direction;
+            if (newIndex < 0) newIndex = state.totalSlides - 1;
+            if (newIndex >= state.totalSlides) newIndex = 0;
+
+            updateCarousel(carouselIndex, newIndex);
+        }
+
+        function updateCarousel(carouselIndex, newIndex) {
+            const state = carouselStates.get(carouselIndex);
+            if (!state) return;
+
+            state.currentIndex = newIndex;
+
+            // Move slides
+            const offset = -newIndex * 100;
+            state.track.style.transform = `translateX(${offset}%)`;
+
+            // Update dots
+            state.dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === newIndex);
+            });
+
+            // Update image count
+            const carousel = document.querySelectorAll('.carousel-container')[carouselIndex];
+            // ✅ Transition class (only for hero carousel)
+            if (carousel.classList.contains('hero-carousel')) {
+                carousel.classList.add('is-transitioning');
+                setTimeout(() => carousel.classList.remove('is-transitioning'), 650);
+            }
+
+            carousel.querySelector('.current-index').textContent = newIndex + 1;
+
+            // ✅ UPDATE CAPTION (THIS IS THE KEY PART)
+            const activeSlide = state.slides[newIndex];
+            const captionText = activeSlide.dataset.caption;
+
+            const heroImage = carousel.parentElement; // .hero-image
+            const captionEl = heroImage.querySelector('.hero-image-caption.dynamic');
+
+            if (captionEl && captionText) {
+                captionEl.classList.add('fade-out');
+                setTimeout(() => {
+                    captionEl.textContent = captionText;
+                    captionEl.classList.remove('fade-out');
+                }, 200);
+            }
+        }
+
+
+        // Attach event listeners
+        document.addEventListener('click', (e) => {
+            const prevBtn = e.target.closest('.carousel-prev');
+            const nextBtn = e.target.closest('.carousel-next');
+            const dotBtn = e.target.closest('.carousel-dot');
+
+            if (prevBtn) {
+                const carouselIndex = parseInt(prevBtn.dataset.carouselIndex, 10);
+                navigateCarousel(carouselIndex, -1);
+            }
+
+            if (nextBtn) {
+                const carouselIndex = parseInt(nextBtn.dataset.carouselIndex, 10);
+                navigateCarousel(carouselIndex, 1);
+            }
+
+            if (dotBtn) {
+                const carouselIndex = parseInt(dotBtn.dataset.carouselIndex, 10);
+                const slide = parseInt(dotBtn.dataset.slide, 10);
+                updateCarousel(carouselIndex, slide);
+            }
+        });
+
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') {
+                const activeCarousel = document.activeElement.closest('.carousel-container');
+                if (activeCarousel) {
+                    const carouselIndex = Array.from(document.querySelectorAll('.carousel-container')).indexOf(activeCarousel);
+                    navigateCarousel(carouselIndex, -1);
+                }
+            }
+            if (e.key === 'ArrowRight') {
+                const activeCarousel = document.activeElement.closest('.carousel-container');
+                if (activeCarousel) {
+                    const carouselIndex = Array.from(document.querySelectorAll('.carousel-container')).indexOf(activeCarousel);
+                    navigateCarousel(carouselIndex, 1);
+                }
+            }
+        });
+        // Flip Cards Functionality
+        const flipCards = document.querySelectorAll('.flip-card');
+        console.log('Flip cards trovate:', flipCards.length);
+
+        flipCards.forEach((card, index) => {
+            card.addEventListener('click', function (e) {
+                e.stopPropagation();
+                console.log('Card cliccata:', index);
+                this.classList.toggle('flipped');
+            });
+        });
+
+        // Featured Work toggle
+        const workToggle = document.querySelector('.work-toggle');
+        const workContent = document.getElementById('work-content');
+
+        if (workToggle && workContent) {
+            // Imposta lo stato iniziale come già aperto
+            workToggle.setAttribute('aria-expanded', 'true');
+            workContent.classList.add('expanded');
+            workContent.classList.remove('collapsed');
+
+            workToggle.addEventListener('click', () => {
+                const isExpanded = workToggle.getAttribute('aria-expanded') === 'true';
+                workToggle.setAttribute('aria-expanded', String(!isExpanded));
+
+                workContent.classList.toggle('expanded', !isExpanded);
+                workContent.classList.toggle('collapsed', isExpanded);
+            });
+        }
+    </script>
+</body>
+
+</html>
