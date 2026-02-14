@@ -309,6 +309,7 @@
 
     /* =========================================================
       ABOUT SECTION (friendlier text + icons + biotech background)
+      ✅ PATH FIX: bg.dna.jpg is in ROOT
     ========================================================== */
     .about-bg{
       overflow: hidden;
@@ -319,7 +320,7 @@
       inset:0;
       background:
         linear-gradient(rgba(255,255,255,.92), rgba(255,255,255,.92)),
-        url("./assets/bg-dna.jpg");
+        url("./bg.dna.jpg");
       background-size: cover;
       background-position: center;
       opacity: 1;
@@ -372,6 +373,7 @@
 
     /* =========================================================
       EXPERIENCE SECTION (uniform cards + logos + interactive timeline)
+      ✅ PATH FIX: logos in ROOT
     ========================================================== */
     .timeline-row{
       display:flex;
@@ -481,7 +483,8 @@
     .bullets li{ margin-bottom: .55rem; line-height: 1.75; }
 
     /* =========================================================
-      PROJECTS SECTION (rename "Work" -> "Projects")
+      PROJECTS
+      ✅ PATH FIX: pandora.mp4 in ROOT
     ========================================================== */
     .grid{
       display:grid;
@@ -573,7 +576,8 @@
     }
 
     /* =========================================================
-      EDUCATION + SKILLS (logos + Erasmus added)
+      EDUCATION + SKILLS (logos)
+      ✅ PATH FIX: logos in ROOT with names you already have
     ========================================================== */
     .two-col{
       display:grid;
@@ -707,8 +711,7 @@
 
   <!-- =========================================================
     HERO (TEXT CENTERED + 3-IMAGE CAROUSEL)
-    - Images must be inside /assets as:
-      Io.jpg, calcio.jpg, stunnatell.jpg
+    ✅ PATH FIX: hero-1.jpg, hero-2.jpg, hero-3.jpg are in ROOT
   ========================================================== -->
   <section class="hero-wrap">
     <div class="container">
@@ -738,7 +741,6 @@
 
           <div class="hero-actions">
             <a class="btn primary" href="mailto:francescocerni7@gmail.com">Email me</a>
-            <!-- ALL LinkedIn buttons use YOUR LINK -->
             <a class="btn ghost" href="https://www.linkedin.com/in/francesco-cerni/" target="_blank" rel="noreferrer">LinkedIn</a>
           </div>
         </div>
@@ -749,7 +751,7 @@
             <img
               id="heroCarouselImg"
               class="hero-carousel-img"
-              src="./assets/Io.jpg"
+              src="./hero-1.jpg"
               alt="Francesco Cerni photo"
             />
 
@@ -768,7 +770,7 @@
 
   <!-- =========================================================
     ABOUT (friendlier + icons + biotech background image)
-    - Background image: /assets/bg-dna.jpg
+    ✅ PATH FIX: bg.dna.jpg in ROOT
   ========================================================== -->
   <section class="section about-bg" id="about">
     <div class="container">
@@ -831,44 +833,39 @@
   </section>
 
   <!-- =========================================================
-    EXPERIENCE (uniform format + logos + CNR + interactive timeline)
-    - Logos required in /assets:
-      logo-sanofi.png, logo-fidia.png, logo-cnr.png, logo-scar.png
+    EXPERIENCE
+    ✅ PATH FIX: use logo-sanofi.png and fidia.png that are in ROOT
+    NOTE: CNR + SCAR logos are not in your repo yet -> placeholders.
   ========================================================== -->
   <section class="section alt" id="experience">
     <div class="container">
       <div class="kicker">Experience</div>
       <h2>Where I’ve built experience.</h2>
 
-      <!-- Interactive timeline (2020+) -->
       <div class="timeline-row" aria-label="Timeline">
         <button class="time-item" data-target="exp-scar" type="button">
-          <img class="time-logo" src="./assets/logo-scar.png" alt="SCAR Holding logo">
           <span class="time-year">2020+</span> SCAR
         </button>
 
         <button class="time-item" data-target="exp-cnr" type="button">
-          <img class="time-logo" src="./assets/logo-cnr.png" alt="CNR logo">
           <span class="time-year">2023</span> CNR
         </button>
 
         <button class="time-item" data-target="exp-fidia" type="button">
-          <img class="time-logo" src="./assets/logo-fidia.png" alt="Fidia logo">
+          <img class="time-logo" src="./fidia.png" alt="Fidia logo">
           <span class="time-year">2023</span> Fidia
         </button>
 
         <button class="time-item" data-target="exp-sanofi" type="button">
-          <img class="time-logo" src="./assets/logo-sanofi.png" alt="Sanofi logo">
+          <img class="time-logo" src="./logo-sanofi.png" alt="Sanofi logo">
           <span class="time-year">2024–25</span> Sanofi
         </button>
       </div>
 
       <div class="timeline">
-        <!-- SCAR Holding -->
         <div class="timeline-item" id="exp-scar">
           <div class="role-top">
             <div class="role-left">
-              <img class="company-logo" src="./assets/logo-scar.png" alt="SCAR Holding logo">
               <div>
                 <div class="role"><span class="company">SCAR Holding</span> — Founder</div>
                 <div class="meta">Dec 2019 – Present</div>
@@ -881,11 +878,9 @@
           </ul>
         </div>
 
-        <!-- CNR -->
         <div class="timeline-item" id="exp-cnr">
           <div class="role-top">
             <div class="role-left">
-              <img class="company-logo" src="./assets/logo-cnr.png" alt="CNR logo">
               <div>
                 <div class="role"><span class="company">CNR</span> — Research Experience</div>
                 <div class="meta">2023 · Italy</div>
@@ -898,11 +893,10 @@
           </ul>
         </div>
 
-        <!-- Fidia -->
         <div class="timeline-item" id="exp-fidia">
           <div class="role-top">
             <div class="role-left">
-              <img class="company-logo" src="./assets/logo-fidia.png" alt="Fidia logo">
+              <img class="company-logo" src="./fidia.png" alt="Fidia logo">
               <div>
                 <div class="role"><span class="company">Fidia Farmaceutici</span> — R&amp;D Internship</div>
                 <div class="meta">Aug 2023 · Italy</div>
@@ -915,11 +909,10 @@
           </ul>
         </div>
 
-        <!-- Sanofi -->
         <div class="timeline-item" id="exp-sanofi">
           <div class="role-top">
             <div class="role-left">
-              <img class="company-logo" src="./assets/logo-sanofi.png" alt="Sanofi logo">
+              <img class="company-logo" src="./logo-sanofi.png" alt="Sanofi logo">
               <div>
                 <div class="role"><span class="company">Sanofi</span> — Clinical Study Unit Intern (Strategy &amp; Innovation)</div>
                 <div class="meta">Sep 2024 – Aug 2025 · Milan</div>
@@ -938,11 +931,8 @@
   </section>
 
   <!-- =========================================================
-    PROJECTS (renamed)
-    - Pandora: uses /assets/pandora.mp4 + link button
-    - Stunnatell: /assets/stunnatell.jpg + YouTube link
-    - Startup challenge finalist: https://viventech.vercel.app/demo
-    - AI startup regulations: https://aistudio.google.com/apps/drive/...
+    PROJECTS
+    ✅ PATH FIX: pandora.mp4 in ROOT
   ========================================================== -->
   <section class="section" id="projects">
     <div class="container">
@@ -950,10 +940,9 @@
       <h2>Things I’ve built (and keep building).</h2>
 
       <div class="grid">
-        <!-- Pandora project (video) -->
         <article class="project">
           <div class="project-media">
-            <video src="./assets/pandora.mp4" controls preload="metadata"></video>
+            <video src="./pandora.mp4" controls preload="metadata"></video>
           </div>
           <div class="project-body">
             <div class="project-title">Pandora Project</div>
@@ -969,10 +958,9 @@
           </div>
         </article>
 
-        <!-- Stunnatell podcast -->
         <article class="project">
           <div class="project-media">
-            <img src="./assets/stunnatell.jpg" alt="Stunnatell podcast">
+            <img src="./hero-3.jpg" alt="Stunnatell podcast">
           </div>
           <div class="project-body">
             <div class="project-title">Stunnatell Podcast</div>
@@ -988,11 +976,9 @@
           </div>
         </article>
 
-        <!-- Finalista startup challenge -->
         <article class="project">
           <div class="project-media">
-            <!-- optional screenshot; replace if you want -->
-            <img src="./assets/project-vivatech.jpg" alt="Startup challenge finalist">
+            <img src="./hero-2.jpg" alt="Startup challenge finalist">
           </div>
           <div class="project-body">
             <div class="project-title">Finalist — Startup Challenge</div>
@@ -1008,11 +994,9 @@
           </div>
         </article>
 
-        <!-- AI startup regulations -->
         <article class="project">
           <div class="project-media">
-            <!-- optional screenshot; replace if you want -->
-            <img src="./assets/project-aistudio.jpg" alt="AI startup regulations assistant">
+            <img src="./hero-1.jpg" alt="AI startup regulations assistant">
           </div>
           <div class="project-body">
             <div class="project-title">AI Startup Location Assistant</div>
@@ -1032,9 +1016,8 @@
   </section>
 
   <!-- =========================================================
-    EDUCATION (logos + Erasmus Universitat de Lleida)
-    - Logos required in /assets:
-      logo-imperial.png, logo-iqs.png, logo-unimi.png, logo-udl.png
+    EDUCATION
+    ✅ PATH FIX: imperial.png, IQS.png, Unimi.png, Udl.png are in ROOT
   ========================================================== -->
   <section class="section alt" id="education">
     <div class="container">
@@ -1042,12 +1025,11 @@
       <h2>Interdisciplinary foundation.</h2>
 
       <div class="two-col">
-        <!-- EDUCATION -->
         <div class="card">
           <div class="kicker" style="margin-bottom:.4rem;">Education</div>
 
           <div class="edu-item">
-            <img class="edu-logo" src="./assets/logo-imperial.png" alt="Imperial College London logo">
+            <img class="edu-logo" src="./imperial.png" alt="Imperial College London logo">
             <div>
               <div class="edu-title">MSc Visiting — Bioengineering (Imperial College London)</div>
               <div class="edu-meta">Sep 2025 – Feb 2026</div>
@@ -1055,7 +1037,7 @@
           </div>
 
           <div class="edu-item">
-            <img class="edu-logo" src="./assets/logo-iqs.png" alt="IQS logo">
+            <img class="edu-logo" src="./IQS.png" alt="IQS logo">
             <div>
               <div class="edu-title">Dual MSc — Bioengineering &amp; Pharmaceutical Business (IQS)</div>
               <div class="edu-meta">2023 – 2025</div>
@@ -1063,7 +1045,7 @@
           </div>
 
           <div class="edu-item">
-            <img class="edu-logo" src="./assets/logo-unimi.png" alt="University of Milan logo">
+            <img class="edu-logo" src="./Unimi.png" alt="University of Milan logo">
             <div>
               <div class="edu-title">BSc — Medical Biotechnology (University of Milan)</div>
               <div class="edu-meta">2020 – 2023</div>
@@ -1071,7 +1053,7 @@
           </div>
 
           <div class="edu-item">
-            <img class="edu-logo" src="./assets/logo-udl.png" alt="Universitat de Lleida logo">
+            <img class="edu-logo" src="./Udl.png" alt="Universitat de Lleida logo">
             <div>
               <div class="edu-title">Erasmus — Universitat de Lleida</div>
               <div class="edu-meta">During BSc (University of Milan)</div>
@@ -1079,7 +1061,6 @@
           </div>
         </div>
 
-        <!-- SKILLS -->
         <div class="card">
           <div class="kicker" style="margin-bottom:.4rem;">Skills</div>
 
@@ -1112,7 +1093,6 @@
 
   <!-- =========================================================
     CONTACT
-    - All LinkedIn buttons use your link
   ========================================================== -->
   <section class="section" id="contact">
     <div class="container">
@@ -1181,8 +1161,7 @@
 
     /* =========================================================
       2) HERO CAROUSEL (3 images + captions + prev/next loop)
-      - Uses assets:
-        Io.jpg, calcio.jpg, stunnatell.jpg
+      ✅ PATH FIX: hero-1.jpg, hero-2.jpg, hero-3.jpg in ROOT
     ========================================================== */
     (function () {
       const img = document.getElementById("heroCarouselImg");
@@ -1193,9 +1172,9 @@
       if (!img || !caption || !next || !prev) return;
 
       const slides = [
-        { src: "./assets/Io.jpg", text: "At the stadium — football has always been part of my life." },
-        { src: "./assets/calcio.jpg", text: "On the pitch — teamwork, discipline, and competitive mindset." },
-        { src: "./assets/stunnatell.jpg", text: "STN TELL — podcast on innovation, startups, and entrepreneurship." }
+        { src: "./hero-1.jpg", text: "At the stadium — football has always been part of my life." },
+        { src: "./hero-2.jpg", text: "On the pitch — teamwork, discipline, and competitive mindset." },
+        { src: "./hero-3.jpg", text: "STN TELL — podcast on innovation, startups, and entrepreneurship." }
       ];
 
       let i = 0;
@@ -1227,7 +1206,7 @@
     })();
 
     /* =========================================================
-      3) EXPERIENCE TIMELINE (click logo -> scroll to card)
+      3) EXPERIENCE TIMELINE (click -> scroll to card)
     ========================================================== */
     (function () {
       const items = document.querySelectorAll('.time-item');
@@ -1248,7 +1227,6 @@
         });
       });
 
-      // Auto-highlight based on scroll
       const expCards = ['exp-scar','exp-cnr','exp-fidia','exp-sanofi']
         .map(id => document.getElementById(id))
         .filter(Boolean);
