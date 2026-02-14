@@ -1,1661 +1,865 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Personal Portfolio</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital@0;1&family=Space+Grotesk:wght@400;600;700&display=swap"
-        rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary: #1a1a1a;
-            --secondary: #4a4a4a;
-            --light: #f5f5f5;
-            --accent: #d4af37;
-            --serif: 'Crimson Text', serif;
-            --sans: 'Space Grotesk', sans-serif;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background: #ffffff;
-            color: var(--primary);
-            font-family: var(--sans);
-            line-height: 1.6;
-            font-size: 16px;
-        }
-
-        /* Navigation */
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-            z-index: 1000;
-            padding: 1.5rem 2rem;
-        }
-
-        nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-family: var(--serif);
-            font-size: 1.4rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-            text-decoration: none;
-            color: var(--primary);
-        }
-
-        .logo-image {
-            height: 30px;
-            /* controlla l’altezza */
-            width: auto;
-            opacity: 0.85;
-            /* effetto elegante */
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 3rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--secondary);
-            font-size: 0.95rem;
-            font-weight: 500;
-            transition: color 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .nav-links a:hover {
-            color: var(--accent);
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-        }
-
-        /* Hero Section */
-        .hero {
-            margin-top: 80px;
-            padding: 4rem 2rem;
-            background: linear-gradient(135deg, #fafaf8 0%, #f5f5f5 100%);
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
-            animation: fadeIn 0.8s ease-out;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .hero-text h1 {
-            font-family: var(--serif);
-            font-size: 3.5rem;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            letter-spacing: -1px;
-            color: var(--primary);
-        }
-
-        .hero-text p {
-            font-size: 1.1rem;
-            color: var(--secondary);
-            margin-bottom: 1.5rem;
-            line-height: 1.8;
-        }
-
-        .hero-image {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-            border-radius: 8px;
-            animation: imageSlide 0.8s ease-out;
-        }
-
-        @keyframes imageSlide {
-            from {
-                opacity: 0;
-                transform: translateX(30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        .hero-image-caption {
-            margin-top: 0.75rem;
-            font-size: 0.9rem;
-            color: var(--secondary);
-            text-align: center;
-            font-style: italic;
-        }
-
-
-        .cta-button {
-            display: inline-block;
-            background: var(--primary);
-            color: white;
-            padding: 0.9rem 2.2rem;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-            border: 2px solid var(--primary);
-        }
-
-        .cta-button:hover {
-            background: transparent;
-            color: var(--primary);
-        }
-
-        .cta-button.secondary {
-            background: transparent;
-            color: var(--primary);
-            margin-left: 1rem;
-        }
-
-        .cta-button.secondary:hover {
-            background: var(--primary);
-            color: white;
-        }
-
-        /* About Section */
-        .about {
-            padding: 5rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .about h2 {
-            font-family: var(--serif);
-            font-size: 2.2rem;
-            margin-bottom: 2rem;
-            color: var(--primary);
-            letter-spacing: -0.5px;
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-        }
-
-        .about-content p {
-            font-size: 1rem;
-            color: var(--secondary);
-            line-height: 1.9;
-            margin-bottom: 1.5rem;
-        }
-
-        /* Portfolio/Products Section */
-        .portfolio {
-            padding: 5rem 2rem;
-            background: var(--light);
-        }
-
-        .portfolio-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .portfolio h2 {
-            font-family: var(--serif);
-            font-size: 2.2rem;
-            margin-bottom: 3rem;
-            color: var(--primary);
-            letter-spacing: -0.5px;
-        }
-
-        .portfolio-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 3rem;
-        }
-
-        .portfolio-item {
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
-            animation: itemFade 0.6s ease-out backwards;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            min-height: 400px;
-        }
-
-        @keyframes itemFade {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .portfolio-item:nth-child(1) {
-            animation-delay: 0.1s;
-        }
-
-        .portfolio-item:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-
-        .portfolio-item:nth-child(3) {
-            animation-delay: 0.3s;
-        }
-
-        .portfolio-item:nth-child(4) {
-            animation-delay: 0.4s;
-        }
-
-        .portfolio-item:hover {
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
-        }
-
-        /* Carousel Styles */
-        .carousel-container {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #e0e0e0 0%, #f0f0f0 100%);
-            overflow: hidden;
-        }
-
-        .carousel-track {
-            display: flex;
-            height: 100%;
-            transition: transform 0.4s ease;
-        }
-
-        .carousel-slide {
-            min-width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-
-        .carousel-slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            transition: transform 0.3s ease;
-        }
-
-        .portfolio-item:hover .carousel-slide img {
-            transform: scale(1.05);
-        }
-
-        .carousel-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0, 0, 0, 0.5);
-            color: white;
-            border: none;
-            padding: 1rem 0.75rem;
-            cursor: pointer;
-            font-size: 1.5rem;
-            transition: all 0.3s ease;
-            z-index: 10;
-        }
-
-        .carousel-nav:hover {
-            background: rgba(0, 0, 0, 0.8);
-        }
-
-        .carousel-prev {
-            left: 0;
-        }
-
-        .carousel-next {
-            right: 0;
-        }
-
-        .carousel-indicators {
-            position: absolute;
-            bottom: 1rem;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 0.5rem;
-            z-index: 10;
-        }
-
-        .carousel-dot {
-            width: 0.6rem;
-            height: 0.6rem;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.5);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: none;
-            padding: 0;
-        }
-
-        .carousel-dot.active {
-            background: white;
-            width: 1.5rem;
-            border-radius: 0.3rem;
-        }
-
-        .carousel-dot:hover {
-            background: rgba(255, 255, 255, 0.8);
-        }
-
-        .carousel-image-count {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: rgba(0, 0, 0, 0.6);
-            color: white;
-            padding: 0.4rem 0.8rem;
-            border-radius: 4px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            z-index: 10;
-        }
-
-        .portfolio-content {
-            padding: 3rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .portfolio-label {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--accent);
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-
-        .portfolio-item h3 {
-            font-family: var(--serif);
-            font-size: 1.5rem;
-            margin-bottom: 0.8rem;
-            color: var(--primary);
-            letter-spacing: -0.3px;
-        }
-
-        .portfolio-item p {
-            font-size: 0.95rem;
-            color: var(--secondary);
-            line-height: 1.7;
-            margin-bottom: 1.2rem;
-        }
-
-        .portfolio-link {
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            transition: all 0.3s ease;
-        }
-
-        .portfolio-link:hover {
-            gap: 0.5rem;
-        }
-
-        /* Contact Section */
-        .contact {
-            padding: 5rem 2rem;
-            max-width: 600px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .contact h2 {
-            font-family: var(--serif);
-            font-size: 2.2rem;
-            margin-bottom: 1.5rem;
-            color: var(--primary);
-            letter-spacing: -0.5px;
-        }
-
-        .contact p {
-            font-size: 1rem;
-            color: var(--secondary);
-            margin-bottom: 2rem;
-            line-height: 1.8;
-        }
-
-        .contact-cta {
-            display: inline-block;
-            background: var(--primary);
-            color: white;
-            padding: 1rem 2.5rem;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-        }
-
-        .contact-cta:hover {
-            background: var(--accent);
-            transform: translateY(-2px);
-        }
-
-        /* Footer */
-        footer {
-            background: var(--primary);
-            color: white;
-            text-align: center;
-            padding: 2rem;
-            font-size: 0.85rem;
-            letter-spacing: 0.5px;
-        }
-
-        footer a {
-            color: var(--accent);
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero {
-                grid-template-columns: 1fr;
-                padding: 2rem;
-                margin-top: 100px;
-            }
-
-            .hero-text h1 {
-                font-size: 2.2rem;
-            }
-
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-
-            .portfolio-item {
-                grid-template-columns: 1fr;
-                min-height: auto;
-            }
-
-            .carousel-container {
-                height: 300px;
-            }
-
-            .portfolio-content {
-                padding: 2rem;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .carousel-nav {
-                padding: 0.75rem 0.5rem;
-                font-size: 1.2rem;
-            }
-        }
-
-        /* Scroll indicator */
-        .scroll-indicator {
-            text-align: center;
-            color: var(--secondary);
-            font-size: 0.85rem;
-            padding-bottom: 2rem;
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-
-        /* My Story Section - Flip Cards */
-        .story-title {
-            margin-bottom: 3rem;
-            text-align: center;
-        }
-
-        .story-toggle {
-            all: unset;
-            font-family: var(--serif);
-            font-size: 2.2rem;
-            letter-spacing: -0.5px;
-            color: var(--primary);
-            cursor: default;
-        }
-
-        .story-cards-container {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            perspective: 1000px;
-            max-width: 1200px;
-            margin: 20px auto;
-        }
-
-        .flip-card {
-            background-color: transparent;
-            width: 100%;
-            height: 100%;
-            aspect-ratio: 1 / 1;
-            cursor: pointer;
-            position: relative;
-        }
-
-        .flip-card:hover {
-            transform: scale(1.05);
-            transition: transform 0.3s ease;
-        }
-
-        .flip-card-inner {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            transform-style: preserve-3d;
-            -webkit-transform-style: preserve-3d;
-        }
-
-        .flip-card.flipped .flip-card-inner {
-            transform: rotateY(180deg);
-            -webkit-transform: rotateY(180deg);
-        }
-
-        .flip-card-front,
-        .flip-card-back {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
-            -moz-backface-visibility: hidden;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            border-radius: 8px;
-            padding: 2rem;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-        }
-
-        .flip-card-front {
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-color: #e8e8e8;
-            color: white;
-            font-weight: 600;
-            font-size: 1.3rem;
-            text-align: center;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-            position: relative;
-        }
-
-        /* Overlay opzionale per le immagini */
-        .flip-card-front::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 8px;
-            z-index: 1;
-        }
-
-        .flip-card-front {
-            z-index: 0;
-        }
-
-        .flip-card-front::after {
-            content: attr(data-title);
-            position: relative;
-            z-index: 2;
-        }
-
-        .flip-card-back {
-            background: white;
-            transform: rotateY(180deg);
-            -webkit-transform: rotateY(180deg);
-            overflow-y: auto;
-            padding: 2rem;
-            justify-content: flex-start;
-            align-items: flex-start;
-            padding-top: 1.5rem;
-        }
-
-        .flip-card-back h3 {
-            font-family: var(--serif);
-            font-size: 1.5rem;
-            margin-bottom: 0.8rem;
-            margin-top: 0;
-            color: var(--primary);
-            letter-spacing: -0.3px;
-            text-align: center;
-            width: 100%;
-        }
-
-        .flip-card-back p {
-            font-size: 0.95rem;
-            color: var(--secondary);
-            line-height: 1.7;
-            text-align: left;
-            margin: 0;
-            width: 100%;
-        }
-
-        .flip-card-back .story-label {
-            font-size: 0.8rem;
-            color: var(--accent);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 0.8rem;
-            margin-top: 0;
-            font-weight: 600;
-            text-align: center;
-            width: 100%;
-            display: block;
-        }
-
-        @media (max-width: 768px) {
-            .story-cards-container {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-                max-width: 100%;
-            }
-
-            .flip-card {
-                aspect-ratio: 1 / 1;
-            }
-
-            .flip-card-back {
-                padding: 1.5rem;
-            }
-
-            .flip-card-back h3 {
-                font-size: 1.3rem;
-                margin-bottom: 0.6rem;
-            }
-
-            .flip-card-back p {
-                font-size: 0.9rem;
-            }
-        }
-
-        .video-card {
-            padding: 0;
-            overflow: hidden;
-        }
-
-        .video-card video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 0;
-        }
-
-        .video-card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.35);
-            z-index: 1;
-        }
-
-        .video-card .video-title {
-            position: relative;
-            z-index: 2;
-            color: white;
-            font-size: 1.3rem;
-            font-weight: 600;
-            text-align: center;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-        }
-
-
-        /* Featured Work – clickable title */
-        .work-title {
-            margin-bottom: 3rem;
-        }
-
-        .work-toggle {
-            all: unset;
-            display: inline-flex;
-            align-items: baseline;
-            gap: 0.75rem;
-            cursor: pointer;
-            font-family: var(--serif);
-            font-size: 2.2rem;
-            letter-spacing: -0.5px;
-            color: var(--primary);
-        }
-
-        .work-toggle:hover .work-chevron {
-            transform: translateY(-1px);
-        }
-
-        .work-chevron {
-            font-size: 1.1rem;
-            color: var(--secondary);
-            opacity: 0.7;
-            transition: transform 0.35s ease, opacity 0.35s ease;
-        }
-
-        /* Collapsible portfolio */
-        .portfolio-grid.collapsed {
-            max-height: 0;
-            overflow: hidden;
-            opacity: 0;
-            transform: translateY(-8px);
-            transition:
-                max-height 1s cubic-bezier(0.25, 0.8, 0.25, 1),
-                opacity 0.6s ease,
-                transform 0.6s ease;
-        }
-
-        .portfolio-grid.expanded {
-            max-height: 6000px;
-            /* tanto, ci sono le card */
-            opacity: 1;
-            transform: translateY(0);
-            transition:
-                max-height 1s cubic-bezier(0.25, 0.8, 0.25, 1),
-                opacity 0.6s ease,
-                transform 0.6s ease;
-        }
-
-        /* Chevron rotation */
-        .work-toggle[aria-expanded="true"] .work-chevron {
-            transform: rotate(90deg);
-            opacity: 0.9;
-        }
-
-        /* Hero profile carousel – centering fix */
-        .hero-carousel .carousel-slide {
-            display: flex;
-            align-items: center;
-            /* centro verticale */
-            justify-content: center;
-            /* centro orizzontale */
-        }
-
-        .hero-carousel .carousel-slide img {
-            max-height: 420px;
-            /* scegli tu: 380–450px */
-            width: auto;
-            object-fit: contain;
-        }
-
-        /* Hero profile carousel – fixed frame */
-        .hero-carousel {
-            width: 100%;
-            max-width: 420px;
-            /* controlla la larghezza visiva */
-            height: 420px;
-            /* controlla l’altezza */
-            margin: 0 auto;
-            /* centra il frame */
-        }
-
-
-        .hero-carousel .carousel-slide img {
-            transition: opacity 0.3s ease;
-        }
-
-        /* === HERO carousel: smoother slide motion === */
-        .hero-carousel .carousel-track {
-            transition: transform 0.65s cubic-bezier(0.25, 0.8, 0.25, 1);
-        }
-
-        .hero-carousel .carousel-slide img {
-            transition: transform 0.65s cubic-bezier(0.25, 0.8, 0.25, 1),
-                opacity 0.65s ease;
-        }
-
-        /* === Caption animation === */
-        .hero-image-caption.dynamic {
-            transition: opacity 0.35s ease, transform 0.35s ease;
-        }
-
-        .hero-image-caption.fade-out {
-            opacity: 0;
-            transform: translateY(6px);
-        }
-
-        /* === Product Case Study Style === */
-
-        .product-case {
-            gap: 1.4rem;
-        }
-
-        .product-title {
-            font-family: var(--serif);
-            font-size: 2rem;
-            letter-spacing: -0.5px;
-            margin-bottom: 0.2rem;
-        }
-
-        .product-role {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 1.2px;
-            color: var(--accent);
-            font-weight: 700;
-            margin-bottom: 1.2rem;
-        }
-
-        .product-description {
-            font-size: 1.05rem;
-            color: var(--secondary);
-            margin-bottom: 2rem;
-            max-width: 420px;
-        }
-
-        .product-metrics {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-bottom: 2.5rem;
-        }
-
-        .metric-value {
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: var(--primary);
-        }
-
-        .metric-label {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--secondary);
-        }
-
-        .product-achievements h4 {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 1.2px;
-            margin-bottom: 0.8rem;
-            color: var(--primary);
-        }
-
-        .product-achievements ul {
-            list-style: none;
-            padding-left: 0;
-            margin-bottom: 2rem;
-        }
-
-        .product-achievements li {
-            position: relative;
-            padding-left: 1.4rem;
-            margin-bottom: 0.6rem;
-            font-size: 0.95rem;
-            color: var(--secondary);
-        }
-
-        .product-achievements li::before {
-            content: "→";
-            position: absolute;
-            left: 0;
-            color: var(--accent);
-            font-weight: 700;
-        }
-
-        .product-cta {
-            display: inline-block;
-            background: var(--primary);
-            color: white;
-            padding: 0.8rem 1.8rem;
-            border-radius: 6px;
-            text-decoration: none;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 600;
-            width: fit-content;
-        }
-
-        .product-cta:hover {
-            background: var(--accent);
-        }
-
-        /* === Product metrics dividers (editorial style) === */
-
-        .product-metrics {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 0;
-            padding: 2rem 0;
-            margin: 2.5rem 0;
-
-            border-top: 1px solid rgba(0, 0, 0, 0.08);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-        }
-
-        .product-metrics .metric {
-            padding: 0 1.5rem;
-        }
-
-        /* Vertical dividers between metrics */
-        .product-metrics .metric:not(:last-child) {
-            border-right: 1px solid rgba(0, 0, 0, 0.08);
-        }
-
-        /* Slightly stronger metric number */
-        .metric-value {
-            font-size: 1.8rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-        }
-
-        /* Label spacing refinement */
-        .metric-label {
-            margin-top: 0.3rem;
-        }
-
-        .portfolio-content .product-role {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.6px;
-            color: var(--accent);
-            font-weight: 700;
-            margin-bottom: 0.8rem;
-        }
-    </style>
+  <!-- =========================================================
+    HEAD / META
+    - Change title + social preview if you want
+  ========================================================== -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Francesco Cerni | Healthcare Innovation & Startups</title>
+
+  <!-- Fonts (same vibe as your example) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital@0;1&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* =========================================================
+      GLOBAL STYLES / THEME
+      - Edit colors + fonts here
+    ========================================================== */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root{
+      --primary:#1a1a1a;
+      --secondary:#4a4a4a;
+      --light:#f5f5f5;
+      --accent:#d4af37;
+
+      --serif:'Crimson Text', serif;
+      --sans:'Space Grotesk', sans-serif;
+
+      --maxw:1200px;
+      --radius:10px;
+      --shadow:0 10px 28px rgba(0,0,0,.10);
+      --border:1px solid rgba(0,0,0,.10);
+    }
+
+    html { scroll-behavior: smooth; }
+    body{
+      font-family: var(--sans);
+      color: var(--primary);
+      background:#fff;
+      line-height:1.65;
+      font-size:16px;
+    }
+
+    /* Utility */
+    .container{ max-width: var(--maxw); margin: 0 auto; padding: 0 2rem; }
+    .section{ padding: 5rem 0; }
+    .section.alt{ background: var(--light); }
+    .kicker{
+      font-size:.78rem;
+      text-transform:uppercase;
+      letter-spacing:1.4px;
+      color: var(--accent);
+      font-weight:800;
+      margin-bottom:.75rem;
+    }
+    h2{
+      font-family: var(--serif);
+      font-size: 2.2rem;
+      letter-spacing: -.5px;
+      margin-bottom: 1.25rem;
+    }
+    p{ color: var(--secondary); }
+
+    /* Make anchor jumps look nice with fixed header */
+    section{ scroll-margin-top: 92px; }
+
+    /* =========================================================
+      HEADER / NAV
+      - Edit your name/logo + navigation labels here
+    ========================================================== */
+    header{
+      position: fixed;
+      top: 0; width: 100%;
+      background: rgba(255,255,255,.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0,0,0,.08);
+      z-index: 1000;
+      padding: 1.1rem 0;
+    }
+    nav{
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 0 2rem;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 1rem;
+    }
+    .logo{
+      display:flex;
+      align-items:center;
+      gap:.75rem;
+      text-decoration:none;
+      color: var(--primary);
+    }
+    .logo-name{
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: 1.35rem;
+      letter-spacing:-.5px;
+      line-height:1;
+    }
+    .logo-img{
+      height: 30px; width: 30px;
+      border-radius: 8px;
+      object-fit: cover;
+      opacity:.92;
+      border: var(--border);
+    }
+    .nav-links{
+      list-style:none;
+      display:flex;
+      gap: 2.25rem;
+      align-items:center;
+    }
+    .nav-links a{
+      text-decoration:none;
+      color: var(--secondary);
+      font-size:.92rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .6px;
+      transition: color .25s ease;
+    }
+    .nav-links a:hover{ color: var(--accent); }
+
+    .nav-cta{
+      display:flex;
+      gap:.75rem;
+      align-items:center;
+    }
+    .btn{
+      display:inline-block;
+      padding: .75rem 1.25rem;
+      border-radius: 8px;
+      border: 2px solid var(--primary);
+      text-decoration:none;
+      font-weight: 800;
+      font-size: .82rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all .25s ease;
+    }
+    .btn.primary{ background: var(--primary); color:#fff; }
+    .btn.primary:hover{ background: transparent; color: var(--primary); }
+    .btn.ghost{ background: transparent; color: var(--primary); }
+    .btn.ghost:hover{ background: var(--primary); color:#fff; }
+
+    @media (max-width: 900px){
+      .nav-links{ display:none; }
+    }
+
+    /* =========================================================
+      HERO SECTION
+      - Edit the main intro text + hero image here
+    ========================================================== */
+    .hero-wrap{
+      margin-top: 82px; /* keep space for fixed header */
+      background: linear-gradient(135deg, #fafaf8 0%, #f5f5f5 100%);
+      padding: 4.5rem 0 3.5rem;
+    }
+    .hero{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 3.5rem;
+      align-items:center;
+    }
+    .hero h1{
+      font-family: var(--serif);
+      font-size: 3.2rem;
+      line-height: 1.05;
+      letter-spacing: -1px;
+      margin-bottom: 1rem;
+    }
+    .hero-lead{
+      font-size: 1.06rem;
+      line-height: 1.9;
+      margin-bottom: 1.25rem;
+    }
+    .pill-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap: .6rem;
+      margin: 1.35rem 0 2rem;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:.45rem;
+      padding:.45rem .7rem;
+      border-radius: 999px;
+      border: var(--border);
+      background: rgba(255,255,255,.75);
+      font-size: .86rem;
+      color: var(--secondary);
+    }
+    .hero-actions{ display:flex; gap: 1rem; flex-wrap: wrap; }
+
+    .hero-card{
+      background:#fff;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      border: 1px solid rgba(0,0,0,.06);
+    }
+    .hero-card img{
+      width:100%;
+      height: 420px;
+      object-fit: cover;
+      display:block;
+    }
+    .hero-caption{
+      padding: .85rem 1rem;
+      font-size: .92rem;
+      color: var(--secondary);
+      font-style: italic;
+      text-align:center;
+    }
+
+    @media (max-width: 900px){
+      .hero{ grid-template-columns: 1fr; }
+      .hero h1{ font-size: 2.35rem; }
+      .hero-card img{ height: 340px; }
+    }
+
+    /* =========================================================
+      ABOUT SECTION
+      - Edit the story + highlights here
+    ========================================================== */
+    .about-grid{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 3rem;
+      align-items:start;
+    }
+    .about p{ margin-bottom: 1rem; line-height: 1.95; }
+
+    .card{
+      background:#fff;
+      border-radius: var(--radius);
+      border: var(--border);
+      box-shadow: 0 6px 18px rgba(0,0,0,.06);
+      padding: 1.6rem;
+    }
+    .list{
+      list-style:none;
+      padding-left:0;
+      display:flex;
+      flex-direction:column;
+      gap:.9rem;
+      margin-top: .75rem;
+    }
+    .list li{
+      display:grid;
+      grid-template-columns: 22px 1fr;
+      gap:.65rem;
+      align-items:start;
+      color: var(--secondary);
+      line-height: 1.65;
+    }
+    .list li::before{
+      content:"→";
+      font-weight: 900;
+      color: var(--accent);
+      transform: translateY(2px);
+    }
+
+    @media (max-width: 900px){
+      .about-grid{ grid-template-columns: 1fr; }
+    }
+
+    /* =========================================================
+      EXPERIENCE SECTION (timeline)
+      - Edit roles + bullets here
+    ========================================================== */
+    .timeline{
+      display:flex;
+      flex-direction:column;
+      gap: 1.25rem;
+      margin-top: 1.5rem;
+    }
+    .timeline-item{
+      background:#fff;
+      border-radius: var(--radius);
+      border: var(--border);
+      padding: 1.6rem;
+      box-shadow: 0 6px 18px rgba(0,0,0,.06);
+    }
+    .role-top{
+      display:flex;
+      flex-wrap:wrap;
+      align-items:baseline;
+      justify-content:space-between;
+      gap: .75rem;
+      margin-bottom: .75rem;
+    }
+    .role{
+      font-family: var(--serif);
+      font-size: 1.35rem;
+      letter-spacing: -.3px;
+    }
+    .company{
+      font-weight: 800;
+      color: var(--primary);
+    }
+    .meta{
+      font-size: .9rem;
+      color: var(--secondary);
+      white-space: nowrap;
+    }
+    .bullets{
+      margin-top: .75rem;
+      padding-left: 1.1rem;
+      color: var(--secondary);
+    }
+    .bullets li{ margin-bottom: .55rem; line-height: 1.75; }
+
+    /* =========================================================
+      PROJECTS SECTION (cards grid)
+      - Add/remove cards freely
+    ========================================================== */
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .project{
+      background:#fff;
+      border-radius: var(--radius);
+      border: var(--border);
+      overflow:hidden;
+      box-shadow: 0 8px 22px rgba(0,0,0,.08);
+      display:flex;
+      flex-direction:column;
+      min-height: 360px;
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+    .project:hover{
+      transform: translateY(-3px);
+      box-shadow: 0 14px 34px rgba(0,0,0,.12);
+    }
+    .project img{
+      width:100%;
+      height: 190px;
+      object-fit: cover;
+      display:block;
+    }
+    .project-body{
+      padding: 1.5rem;
+      display:flex;
+      flex-direction:column;
+      gap: .75rem;
+      flex: 1;
+    }
+    .project-title{
+      font-family: var(--serif);
+      font-size: 1.35rem;
+      letter-spacing: -.3px;
+      color: var(--primary);
+    }
+    .tags{
+      display:flex;
+      flex-wrap:wrap;
+      gap:.5rem;
+      margin-top:.25rem;
+    }
+    .tag{
+      font-size:.75rem;
+      font-weight: 800;
+      letter-spacing:.7px;
+      text-transform: uppercase;
+      color: var(--secondary);
+      border: var(--border);
+      padding: .35rem .55rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,.75);
+    }
+    .project a{
+      margin-top: auto;
+      display:inline-flex;
+      width: fit-content;
+      text-decoration:none;
+      color: var(--accent);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .6px;
+      font-size: .85rem;
+      gap:.5rem;
+      align-items:center;
+    }
+    .project a:hover{ text-decoration: underline; }
+
+    @media (max-width: 900px){
+      .grid{ grid-template-columns: 1fr; }
+    }
+
+    /* =========================================================
+      EDUCATION + SKILLS (two columns)
+      - Edit entries and skill chips
+    ========================================================== */
+    .two-col{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 2rem;
+      align-items:start;
+    }
+    @media (max-width: 900px){
+      .two-col{ grid-template-columns: 1fr; }
+    }
+    .edu-item{
+      border-top: 1px solid rgba(0,0,0,.08);
+      padding-top: 1rem;
+      margin-top: 1rem;
+    }
+    .edu-item:first-child{ border-top: none; padding-top: 0; margin-top: 0; }
+    .edu-title{ font-weight: 900; color: var(--primary); }
+    .edu-meta{ font-size: .92rem; color: var(--secondary); margin-top: .25rem; }
+
+    .chip-row{ display:flex; flex-wrap:wrap; gap:.6rem; margin-top: .75rem; }
+    .chip{
+      border: var(--border);
+      border-radius: 999px;
+      padding: .45rem .7rem;
+      font-size:.86rem;
+      color: var(--secondary);
+      background: rgba(255,255,255,.75);
+    }
+
+    /* =========================================================
+      CONTACT SECTION
+      - Edit email / links here
+    ========================================================== */
+    .contact{
+      text-align:center;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .contact p{ margin: 0 auto 1.75rem; line-height: 1.9; }
+    .contact-actions{
+      display:flex;
+      gap: 1rem;
+      justify-content:center;
+      flex-wrap:wrap;
+      margin-top: 1rem;
+    }
+    .contact-link{
+      display:inline-flex;
+      align-items:center;
+      gap:.55rem;
+      text-decoration:none;
+      border: 2px solid var(--primary);
+      padding: .85rem 1.2rem;
+      border-radius: 10px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .9px;
+      font-size: .82rem;
+      color: var(--primary);
+      transition: all .25s ease;
+      background: #fff;
+    }
+    .contact-link:hover{
+      background: var(--primary);
+      color:#fff;
+    }
+
+    /* Footer */
+    footer{
+      background: var(--primary);
+      color:#fff;
+      text-align:center;
+      padding: 2.2rem 1rem;
+      font-size: .85rem;
+      letter-spacing:.5px;
+    }
+    footer a{ color: var(--accent); text-decoration:none; }
+    footer a:hover{ text-decoration: underline; }
+  </style>
 </head>
 
 <body>
-    <!-- Navigation -->
-    <header>
-        <nav>
-            <a href="#" class="logo">
-                Francesco Cerni
-                <img src="Panarea.jpeg" alt="Signature landscape" class="logo-image">
-            </a>
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#portfolio">Work</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+  <!-- =========================================================
+    1) HEADER / NAV (fixed)
+    - Replace logo image + update links
+  ========================================================== -->
+  <header>
+    <nav>
+      <a class="logo" href="#top">
+        <!-- CHANGE: logo image path -->
+        <img class="logo-img" src="./assets/profile.jpg" alt="Francesco Cerni">
+        <!-- CHANGE: name -->
+        <span class="logo-name">Francesco Cerni</span>
+      </a>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-text">
-            <h1>Hi, I am Francesco Cerni</h1>
-            <p>I am passionate about healthcare, biotechnology, and innovation, driven by a strong 
-                interdisciplinary background. I graduated in Bioengineering and Business, and 
-                I have gained more than one year of experience in the pharmaceutical industry, 
-                working at Sanofi and Fidia Farmaceutici. I am deeply interested in the startup 
-                ecosystem and founded SCAR Holding, a company that invests in early-stage scientific 
-                projects focused on healthcare. In addition, I host a podcast where I discuss 
-                innovation and entrepreneurship. Outside of my professional interests, I have a lifelong 
-                passion for football and have been playing since I was young..</p>
-            <p>II am always looking for ways to improve, but when I am not working you can find me at the stadium, 
-                climbing, or running in the park. I am not particularly fast, so you will have no trouble catching up with me.
-.</p>
-            <div style="margin-top: 2rem;">
-                <a href="#contact" class="cta-button">Get In Touch</a>
-                <a href="#portfolio" class="cta-button secondary">See My Work</a>
-            </div>
-        </div>
-        <div class="hero-image">
-            <div class="carousel-container hero-carousel">
-                <div class="carousel-track" style="transform: translateX(0%);">
+      <!-- NAV LINKS (desktop) -->
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Work</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
 
-                    <div class="carousel-slide" data-caption="Me at Sanofi's HQ in Milan HQ">
-                        <img src="="Profil" e 1">
-                    </div>
+      <!-- RIGHT CTA BUTTONS -->
+      <div class="nav-cta">
+        <!-- CHANGE: portfolio link (Linktree / LinkedIn / website) -->
+        <a class="btn ghost" href="https://linktr.ee/" target="_blank" rel="noreferrer">Portfolio</a>
+        <a class="btn primary" href="#contact">Reach out</a>
+      </div>
+    </nav>
+  </header>
 
-                    <div class="carousel-slide" data-caption="Pretending to know how to play football">
-                        <img src="file:///Users/francescocerni/Downloads/calcio.jpg" alt="Profile 2">
-                    </div>
+  <!-- Anchor for "back to top" -->
+  <div id="top"></div>
 
-                    <div class="carousel-slide" data-caption="Podcas timee!!">
-                        <img src="./sci.png" alt="Profile 3">
-                    </div>
+  <!-- =========================================================
+    2) HERO SECTION
+    - Main positioning: Innovation + Healthcare + Startups
+    - Replace hero image + caption
+  ========================================================== -->
+  <section class="hero-wrap">
+    <div class="container">
+      <div class="hero">
+        <!-- HERO TEXT -->
+        <div>
+          <!-- CHANGE: headline -->
+          <h1>Hi, I’m Francesco Cerni.</h1>
 
-                </div>
+          <!-- CHANGE: lead paragraph (your positioning) -->
+          <p class="hero-lead">
+            I’m driven by a deep passion for <strong>innovation in healthcare</strong>, working at the intersection of
+            <strong>biotechnology, business, and the startup ecosystem</strong>.
+            With experience in the pharmaceutical industry at <strong>Sanofi</strong> and <strong>Fidia Farmaceutici</strong>,
+            I’m focused on translating scientific ideas into real-world impact.
+          </p>
 
-                <button class="carousel-nav carousel-prev" data-carousel-index="3">❮</button>
-                <button class="carousel-nav carousel-next" data-carousel-index="3">❯</button>
+          <!-- OPTIONAL: short second paragraph -->
+          <p class="hero-lead" style="margin-top:.2rem;">
+            I founded <strong>SCAR Holding</strong> to invest in early-stage scientific healthcare projects, and I host a
+            podcast exploring <strong>startups, innovation, and entrepreneurship</strong>.
+          </p>
 
-                <div class="carousel-image-count">
-                    <span class="current-index">1</span> / <span class="total-images">3</span>
-                </div>
+          <!-- QUICK HIGHLIGHT PILLS (edit freely) -->
+          <div class="pill-row">
+            <span class="pill">Healthcare Innovation</span>
+            <span class="pill">Biotech + Business</span>
+            <span class="pill">Early-stage Investing</span>
+            <span class="pill">Pharma Experience</span>
+          </div>
 
-                <div class="carousel-indicators">
-                    <button class="carousel-dot active" data-slide="0" data-carousel-index="3"></button>
-                    <button class="carousel-dot" data-slide="1" data-carousel-index="3"></button>
-                    <button class="carousel-dot" data-slide="2" data-carousel-index="3"></button>
-                </div>
-            </div>
-
-            <!-- caption dinamica -->
-            <p class="hero-image-caption dynamic">Me happy in the SQUID Stockholm HQ</p>
-        </div>
-
-
-    </section>
-
-    <!-- My Story Section - Flip Cards -->
-    <section class="about" id="about">
-        <h2 class="story-title">
-            <span class="story-toggle">My Professional Story</span>
-        </h2>
-
-        <div class="story-cards-container">
-            <!-- Card 1: Understanding Perspectives -->
-            <div class="flip-card">
-                <div class="flip-card-inner">
-                    <!-- MODIFICA: Sostituisci './images/chapter1.jpg' con il percorso della tua immagine -->
-                    <div class="flip-card-front" style="background-image: url('./rettoratoPoli.jpg');">
-                        <span>1. Curiosity Driven</span>
-                    </div>
-                    <div class="flip-card-back">
-                        <span class="story-label">Chapter One</span>
-                        <h3>Understanding Perspectives</h3>
-                        <p>From an early age, I have been fascinated by the idea that multiple perspectives exist and
-                            that these different viewpoints can coexist to make our world better. To understand all
-                            these perspectives, I have tried to remain as open-minded as possible and explore new
-                            experiences. I began by pursuing a deeper understanding of the technical side of things, so
-                            I started studying mechanical engineering. Although not my true passion, I learned how to
-                            engage with rigorous and analytical individuals and to work diligently on subjects that
-                            didn't fully captivate me.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 2: SQUID & Product Discovery -->
-            <div class="flip-card">
-                <div class="flip-card-inner">
-                    <!-- MODIFICA: Sostituisci './images/chapter2.jpg' con il percorso della tua immagine -->
-                    <div class="flip-card-front" style="background-image: url('./ufficio.png');">
-                        <span>2. Product Discovery</span>
-                    </div>
-                    <div class="flip-card-back">
-                        <span class="story-label">Chapter Two</span>
-                        <h3>SQUID Journey Begins</h3>
-                        <p>Unsatisfied with my studies and seeking a different environment, I discovered SQUID as an
-                            opportunity to learn from a new angle. At SQUID, I started supervising the SQUID app, a news
-                            aggregator active in more than 60 countries globally. My role focused on content supervision
-                            and managing partnerships with publishing partners. I gradually transitioned into product
-                            management, working closely with the development team to improve user experience and
-                            retention. After 1.3 years, I had developed clear ideas about the product's direction, and
-                            to fully commit to product development, I decided to relocate to the Stockholm headquarters.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 3: Leadership & Growth -->
-            <div class="flip-card">
-                <div class="flip-card-inner">
-                    <!-- MODIFICA: Sostituisci './images/chapter3.jpg' con il percorso della tua immagine -->
-                    <div class="flip-card-front" style="background-image: url('./Corrieredellasera.png');">
-                        <span>3. Leading Growth</span>
-                    </div>
-                    <div class="flip-card-back">
-                        <span class="story-label">Chapter Three</span>
-                        <h3>Country Manager Era</h3>
-                        <p>After one year working part-time in Milan, I was promoted to full-time Italy Country Manager,
-                            with the mission to scale the Italian team from 2 to 7 people. I was also tasked with
-                            building the SQUID Business app from the ground up for the Italian market: establishing its
-                            identity, mission, go-to-market strategy, and growth plan. Over these 2.5 years, I realized
-                            I lacked the computer science skills necessary to follow development closely. This gap
-                            motivated me to pursue a master's degree in High Performance Computing Engineering, with a
-                            major in computer science and AI.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 4: Technical Mastery & AI -->
-            <div class="flip-card">
-                <div class="flip-card-inner">
-                    <!-- MODIFICA: Sostituisci './images/chapter4.jpg' con il percorso della tua immagine -->
-                    <div class="flip-card-front" style="background-image: url('./Laurea.jpeg');">
-                        <span>4. Technical Excellence</span>
-                    </div>
-                    <div class="flip-card-back">
-                        <span class="story-label">Chapter Four</span>
-                        <h3>Master's & AI Innovation</h3>
-                        <p>Starting with limited foundational knowledge, I committed two years to mastering the
-                            fundamentals of computer science, programming, data structures, algorithms, machine
-                            learning, and AI. Right before graduation, I tested my abilities at the Google AI Hackathon,
-                            where my team reached the final (top 4 out of 60), with Edvige—an AI-powered agent that can
-                            increase knowledge worker productivity by up to 8 hours per week. I believe what
-                            distinguished our team was the product's clear identity, thoughtful design, and compelling
-                            mission that resonated with the judges.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Portfolio Section -->
-    <section class="portfolio" id="portfolio">
-        <div class="portfolio-container">
-
-            <h2 class="work-title">
-                <button class="work-toggle" type="button" aria-expanded="false" aria-controls="work-content">
-                    <span>Featured Work</span>
-                    <span class="work-chevron" aria-hidden="true">↘</span>
-                </button>
-            </h2>
-
-            <div class="portfolio-grid collapsed" id="work-content">
-                <!-- SQUID Business Project -->
-                <div class="portfolio-item">
-                    <div class="carousel-container">
-                        <div class="carousel-track" style="transform: translateX(0%);">
-                            <div class="carousel-slide">
-                                <img src="https://play-lh.googleusercontent.com/j8yZVEVGr-fbkksQvZI6Y9EJ-rTJuyzFTvwCgN_lyUSrsOeuax2d3s-6sS6lnDG-s9ck=w5120-h2880-rw"
-                                    alt="SQUID Business - Main">
-                            </div>
-                            <div class="carousel-slide">
-                                <img src="./squid business 3.jpg" alt="SQUID Business - Feature">
-                            </div>
-                            <div class="carousel-slide">
-                                <img src="./squid business 2.jpg" alt="SQUID Business - UI">
-                            </div>
-                        </div>
-                        <button class="carousel-nav carousel-prev" data-carousel-index="0">❮</button>
-                        <button class="carousel-nav carousel-next" data-carousel-index="0">❯</button>
-                        <div class="carousel-image-count">
-                            <span class="current-index">1</span> / <span class="total-images">3</span>
-                        </div>
-                        <div class="carousel-indicators">
-                            <button class="carousel-dot active" data-slide="0" data-carousel-index="0"></button>
-                            <button class="carousel-dot" data-slide="1" data-carousel-index="0"></button>
-                            <button class="carousel-dot" data-slide="2" data-carousel-index="0"></button>
-                        </div>
-                    </div>
-                    <div class="portfolio-content product-case">
-
-                        <h3 class="product-title">SQUID Business</h3>
-                        <p class="product-role">Italy Country Manager & Squid Business Lead</p>
-
-                        <p class="product-description">
-                            Premium news aggregator for financial & geopolitical intelligence
-                        </p>
-
-                        <div class="product-metrics">
-                            <div class="metric">
-                                <span class="metric-value">9K</span>
-                                <span class="metric-label">Beta users</span>
-                            </div>
-                            <div class="metric">
-                                <span class="metric-value">55%</span>
-                                <span class="metric-label">Day-30 retention</span>
-                            </div>
-                            <div class="metric">
-                                <span class="metric-value">5.6%</span>
-                                <span class="metric-label">Push CTR</span>
-                            </div>
-                        </div>
-
-                        <div class="product-achievements">
-                            <h4>Key achievements</h4>
-                            <ul>
-                                <li>Designed and developed from the ground up</li>
-                                <li>+3.1% article CTR via A/B testing</li>
-                                <li>Featured in MF Milano Finanza & Corriere della Sera</li>
-                            </ul>
-                        </div>
-
-                        <a href="https://play.google.com/store/apps/details?id=co.squidapp.squidpremium"
-                            class="product-cta">
-                            View on App Store →
-                        </a>
-
-                    </div>
-                </div>
-
-                <!-- Edvige Project -->
-                <div class="portfolio-item">
-                    <div class="carousel-container">
-                        <div class="carousel-track" style="transform: translateX(0%);">
-                            <div class="carousel-slide">
-                                <img src="./Edvige.png" alt="Edvige - Main">
-                            </div>
-                            <div class="carousel-slide">
-                                <img src="./Edvige2.png" alt="Edvige - Dashboard">
-                            </div>
-                            <div class="carousel-slide">
-                                <img src="./Edvige3.png" alt="Edvige - Analytics">
-                            </div>
-                        </div>
-                        <button class="carousel-nav carousel-prev" data-carousel-index="1">❮</button>
-                        <button class="carousel-nav carousel-next" data-carousel-index="1">❯</button>
-                        <div class="carousel-image-count">
-                            <span class="current-index">1</span> / <span class="total-images">3</span>
-                        </div>
-                        <div class="carousel-indicators">
-                            <button class="carousel-dot active" data-slide="0" data-carousel-index="1"></button>
-                            <button class="carousel-dot" data-slide="1" data-carousel-index="1"></button>
-                            <button class="carousel-dot" data-slide="2" data-carousel-index="1"></button>
-                        </div>
-                    </div>
-                    <div class="portfolio-content">
-                        <div class="portfolio-label">Edvige</div>
-                        <h3>AI Flow Recovery for Developers</h3>
-                        <p>
-                            Developers lose focus after interruptions (meetings, calls, context switches): 69% waste 8+
-                            hours/week. Edvige helps
-                            restore the workflow in minutes with a contextual dashboard (current task state, relevant
-                            code snippets, prior AI
-                            chats) and gives managers hard numbers on inefficiency and cost (per project + overall) to
-                            reduce unnecessary
-                            interruptions and improve team throughput.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- SQUID News App Project -->
-                <div class="portfolio-item">
-                    <div class="carousel-container">
-                        <div class="carousel-track" style="transform: translateX(0%);">
-                            <div class="carousel-slide">
-                                <img src="./squid.jpg" alt="SQUID - Main">
-                            </div>
-                            <div class="carousel-slide">
-                                <img src="./squid 2.jpg" alt="SQUID - Feed">
-                            </div>
-                            <div class="carousel-slide">
-                                <img src="./squid 3.jpg" alt="SQUID - Categories">
-                            </div>
-                        </div>
-                        <button class="carousel-nav carousel-prev" data-carousel-index="2">❮</button>
-                        <button class="carousel-nav carousel-next" data-carousel-index="2">❯</button>
-                        <div class="carousel-image-count">
-                            <span class="current-index">1</span> / <span class="total-images">3</span>
-                        </div>
-                        <div class="carousel-indicators">
-                            <button class="carousel-dot active" data-slide="0" data-carousel-index="2"></button>
-                            <button class="carousel-dot" data-slide="1" data-carousel-index="2"></button>
-                            <button class="carousel-dot" data-slide="2" data-carousel-index="2"></button>
-                        </div>
-                    </div>
-                    <div class="portfolio-content product-case">
-
-                        <h3 class="product-title">SQUID Business</h3>
-                        <p class="product-role">Part-time Italy Country Manager</p>
-
-                        <p class="product-description">
-                            Premium news aggregator for financial & geopolitical intelligence
-                        </p>
-
-                        <div class="product-metrics">
-                            <div class="metric">
-                                <span class="metric-value">40K</span>
-                                <span class="metric-label">DAU</span>
-                            </div>
-                            <div class="metric">
-                                <span class="metric-value">90K</span>
-                                <span class="metric-label">WAU</span>
-                            </div>
-                            <div class="metric">
-                                <span class="metric-value">180K</span>
-                                <span class="metric-label">MAU</span>
-                            </div>
-                        </div>
-
-                        <div class="product-achievements">
-                            <h4>Key achievements</h4>
-                            <ul>
-                                <li>Increased MAU by 15%</li>
-                                <li>+1.5% push notification CTR via A/B testing</li>
-                                <li>+11% retention by improving onboarding through funnel analysis</li>
-                            </ul>
-                        </div>
-
-                        <a href="https://play.google.com/store/apps/details?id=co.squidapp.squid&hl=en"
-                            class="product-cta">
-                            View on App Store →
-                        </a>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <h2 class="story-title">
-        <span class="story-toggle">Passions and competitive sports</span>
-    </h2>
-
-    <div class="story-cards-container">
-        <!-- Card 1:-->
-        <div class="flip-card">
-            <div class="flip-card-inner">
-                <!-- MODIFICA: Sostituisci './images/chapter4.jpg' con il percorso della tua immagine -->
-                <div class="flip-card-front video-card">
-                    <video src="./bagno a stoccolma.mp4" autoplay muted loop playsinline>
-                    </video>
-                    <span class="video-title">New cultures & experiences</span>
-                </div>
-                <div class="flip-card-back">
-                    <span class="story-label">Chapter Four</span>
-                    <h3>Master's & AI Innovation</h3>
-                    <p>
-
-                    </p>
-                </div>
-            </div>
+          <!-- CTA BUTTONS -->
+          <div class="hero-actions">
+            <!-- CHANGE: your email -->
+            <a class="btn primary" href="mailto:francescocerni7@gmail.com">Email me</a>
+            <!-- CHANGE: LinkedIn / portfolio -->
+            <a class="btn ghost" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
+          </div>
         </div>
 
-        <!-- Card 2: SQUID & Product Discovery -->
-        <div class="flip-card">
-            <div class="flip-card-inner">
-                <!-- MODIFICA: Sostituisci './images/chapter2.jpg' con il percorso della tua immagine -->
-                <div class="flip-card-front video-card">
-                    <video src="./io a vela.mp4" autoplay muted loop playsinline>
-                    </video>
-                    <span class="video-title">Competitive sailing</span>
-                </div>
-
-                <div class="flip-card-back">
-                    <span class="story-label">Chapter Two</span>
-                    <h3>SQUID Journey Begins</h3>
-                    <p>
-
-                    </p>
-                </div>
-            </div>
+        <!-- HERO IMAGE CARD -->
+        <div class="hero-card">
+          <!-- CHANGE: hero image path -->
+          <img src="./assets/hero.jpg" alt="Francesco Cerni - Hero image">
+          <!-- CHANGE: caption -->
+          <div class="hero-caption">Innovation, healthcare, and the energy of building.</div>
         </div>
-
-        <!-- Card 3: Leadership & Growth -->
-        <div class="flip-card">
-            <div class="flip-card-inner">
-                <!-- MODIFICA: Sostituisci './images/chapter3.jpg' con il percorso della tua immagine -->
-                <div class="flip-card-front video-card">
-                    <video src="./skitouring.mp4" autoplay muted loop playsinline>
-                    </video>
-                    <span class="video-title">Ski-touring</span>
-                </div>
-                <div class="flip-card-back">
-                    <span class="story-label">Chapter Three</span>
-                    <h3>Country Manager Era</h3>
-                    <p>
-
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Card 4: Technical Mastery & AI -->
-         <div class="flip-card">
-            <div class="flip-card-inner">
-                <!-- MODIFICA: Sostituisci './images/chapter1.jpg' con il percorso della tua immagine -->
-                <div class="flip-card-front video-card">
-                    <video src="./panawellness.mp4" autoplay muted loop playsinline>
-                    </video>
-                    <span class="video-title">Friends, music & Spritz</span>
-                </div>
-                <div class="flip-card-back">
-                    <span class="story-label">Chapter One</span>
-                    <h3>Understanding Perspectives</h3>
-                    <p>
-
-                    </p>
-                </div>
-            </div>
-        </div>
-        
+      </div>
     </div>
-    </section>
+  </section>
 
+  <!-- =========================================================
+    3) ABOUT SECTION
+    - Longer story + highlights card
+  ========================================================== -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="kicker">About</div>
+      <h2>Innovation-minded, healthcare-driven.</h2>
 
+      <div class="about-grid">
+        <!-- LEFT: STORY -->
+        <div class="about">
+          <!-- CHANGE: your about paragraphs -->
+          <p>
+            I’m passionate about healthcare, biotechnology, and innovation, and I enjoy working across disciplines —
+            from scientific depth to business execution. My background combines Bioengineering and Business, with hands-on
+            experience in the pharmaceutical industry.
+          </p>
+          <p>
+            Alongside pharma, I’m deeply engaged in the startup ecosystem. Through SCAR Holding, I explore and support
+            early-stage scientific projects focused on healthcare. I also host a podcast where I discuss innovation,
+            entrepreneurship, and how new ideas turn into real products and companies.
+          </p>
+          <p>
+            Outside of work, football has been a constant in my life. You’ll also find me climbing or running in the park —
+            not particularly fast, so you’ll have no trouble catching up.
+          </p>
+        </div>
 
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
-        <h2>Let's Talk</h2>
-        <p>I am looking forward to meeting new people and exploring new opportunities in product management and
-            development.</p>
-        <a href="/cdn-cgi/l/email-protection#ee899e879d8f809a8bdedfae89838f8782c08d8183" class="contact-cta">Send Me an
-            Email</a>
-    </section>
+        <!-- RIGHT: HIGHLIGHTS CARD -->
+        <div class="card">
+          <div class="kicker" style="margin-bottom:.4rem;">Highlights</div>
+          <ul class="list">
+            <!-- CHANGE: highlight bullets -->
+            <li>Pharma experience in Strategy/Innovation and R&amp;D contexts.</li>
+            <li>Founder of an early-stage initiative investing in scientific healthcare projects.</li>
+            <li>Podcast host on innovation and entrepreneurship.</li>
+            <li>Interdisciplinary: biotech rigor + business mindset.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2026 Francesco Cerni. All rights reserved.</p>
-    </footer>
+  <!-- =========================================================
+    4) EXPERIENCE SECTION
+    - Add/remove timeline items as needed
+  ========================================================== -->
+  <section class="section alt" id="experience">
+    <div class="container">
+      <div class="kicker">Experience</div>
+      <h2>Where I’ve built experience.</h2>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-    <script>
-        // Carousel functionality
-        const carousels = document.querySelectorAll('.carousel-container');
-        const carouselStates = new Map();
+      <div class="timeline">
+        <!-- EXPERIENCE ITEM 1 -->
+        <div class="timeline-item">
+          <div class="role-top">
+            <div class="role">
+              <span class="company">Sanofi</span> — Clinical Study Unit Intern (Strategy &amp; Innovation)
+            </div>
+            <!-- CHANGE: dates + location -->
+            <div class="meta">Sep 2024 – Aug 2025 · Milan</div>
+          </div>
+          <!-- CHANGE: bullets -->
+          <ul class="bullets">
+            <li>Supported innovation initiatives within clinical study operations.</li>
+            <li>Worked with dashboards/KPIs to improve visibility and decision-making.</li>
+            <li>Collaborated cross-functionally with stakeholders and teams.</li>
+          </ul>
+        </div>
 
-        carousels.forEach((carousel, index) => {
-            const track = carousel.querySelector('.carousel-track');
-            const slides = carousel.querySelectorAll('.carousel-slide');
-            const dots = carousel.querySelectorAll('.carousel-dot');
-            const totalImages = slides.length;
+        <!-- EXPERIENCE ITEM 2 -->
+        <div class="timeline-item">
+          <div class="role-top">
+            <div class="role">
+              <span class="company">Fidia Farmaceutici</span> — R&amp;D Internship
+            </div>
+            <div class="meta">Aug 2023 · Italy</div>
+          </div>
+          <ul class="bullets">
+            <li>Supported R&amp;D activities and scientific workflows.</li>
+            <li>Developed exposure to pharma research environments and processes.</li>
+          </ul>
+        </div>
 
-            carouselStates.set(index, {
-                currentIndex: 0,
-                totalSlides: totalImages,
-                track: track,
-                slides: slides,
-                dots: dots
-            });
+        <!-- EXPERIENCE ITEM 3 -->
+        <div class="timeline-item">
+          <div class="role-top">
+            <div class="role">
+              <span class="company">SCAR Holding</span> — Founder
+            </div>
+            <div class="meta">Dec 2019 – Present</div>
+          </div>
+          <ul class="bullets">
+            <li>Early-stage investing initiative focused on scientific healthcare projects.</li>
+            <li>Exploring the intersection of research, entrepreneurship, and product impact.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
 
-            carousel.dataset.carouselIndex = index;
+  <!-- =========================================================
+    5) PROJECTS / WORK SECTION
+    - Each card: image + short story + tags + link
+  ========================================================== -->
+  <section class="section" id="projects">
+    <div class="container">
+      <div class="kicker">Work</div>
+      <h2>Selected projects & interests.</h2>
 
-            carousel.querySelectorAll('.carousel-prev, .carousel-next').forEach(btn => {
-                btn.dataset.carouselIndex = index;
-            });
+      <div class="grid">
+        <!-- PROJECT CARD 1 -->
+        <article class="project">
+          <!-- CHANGE: image -->
+          <img src="./assets/project-1.jpg" alt="Project 1">
+          <div class="project-body">
+            <div class="project-title">Healthcare KPI &amp; Decision Dashboards</div>
+            <p>
+              Building clear, decision-friendly views for healthcare operations — turning complexity into actions.
+            </p>
+            <div class="tags">
+              <span class="tag">Analytics</span>
+              <span class="tag">Healthcare</span>
+              <span class="tag">Impact</span>
+            </div>
+            <!-- CHANGE: optional link -->
+            <a href="#" target="_blank" rel="noreferrer">Read more <span>→</span></a>
+          </div>
+        </article>
 
-            carousel.querySelectorAll('.carousel-dot').forEach(dot => {
-                dot.dataset.carouselIndex = index;
-            });
+        <!-- PROJECT CARD 2 -->
+        <article class="project">
+          <img src="./assets/project-2.jpg" alt="Project 2">
+          <div class="project-body">
+            <div class="project-title">Early-stage Scientific Investing</div>
+            <p>
+              Exploring early-stage projects where scientific depth meets founder ambition — focused on healthcare.
+            </p>
+            <div class="tags">
+              <span class="tag">Startups</span>
+              <span class="tag">Biotech</span>
+              <span class="tag">VC</span>
+            </div>
+            <a href="#" target="_blank" rel="noreferrer">SCAR Holding <span>→</span></a>
+          </div>
+        </article>
 
-            // Update total images count
-            carousel.querySelector('.total-images').textContent = totalImages;
-        });
+        <!-- PROJECT CARD 3 -->
+        <article class="project">
+          <img src="./assets/project-3.jpg" alt="Project 3">
+          <div class="project-body">
+            <div class="project-title">Podcast: Innovation &amp; Entrepreneurship</div>
+            <p>
+              Conversations about startups, technology, and how new ideas become products and companies.
+            </p>
+            <div class="tags">
+              <span class="tag">Media</span>
+              <span class="tag">Startups</span>
+              <span class="tag">Innovation</span>
+            </div>
+            <a href="#" target="_blank" rel="noreferrer">Listen <span>→</span></a>
+          </div>
+        </article>
 
-        // Navigate carousel
-        function navigateCarousel(carouselIndex, direction) {
-            const state = carouselStates.get(carouselIndex);
-            if (!state) return;
+        <!-- PROJECT CARD 4 -->
+        <article class="project">
+          <img src="./assets/project-4.jpg" alt="Project 4">
+          <div class="project-body">
+            <div class="project-title">Biotech Research &amp; Applied Science</div>
+            <p>
+              Hands-on exposure to research workflows and the scientific foundations behind healthcare innovation.
+            </p>
+            <div class="tags">
+              <span class="tag">Research</span>
+              <span class="tag">Biotech</span>
+              <span class="tag">Healthcare</span>
+            </div>
+            <a href="#" target="_blank" rel="noreferrer">Details <span>→</span></a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
 
-            let newIndex = state.currentIndex + direction;
-            if (newIndex < 0) newIndex = state.totalSlides - 1;
-            if (newIndex >= state.totalSlides) newIndex = 0;
+  <!-- =========================================================
+    6) EDUCATION + SKILLS SECTION
+    - Left: education list
+    - Right: skills chips
+  ========================================================== -->
+  <section class="section alt" id="education">
+    <div class="container">
+      <div class="kicker">Education & Skills</div>
+      <h2>Interdisciplinary foundation.</h2>
 
-            updateCarousel(carouselIndex, newIndex);
-        }
+      <div class="two-col">
+        <!-- EDUCATION -->
+        <div class="card">
+          <div class="kicker" style="margin-bottom:.4rem;">Education</div>
 
-        function updateCarousel(carouselIndex, newIndex) {
-            const state = carouselStates.get(carouselIndex);
-            if (!state) return;
+          <!-- CHANGE: education entries -->
+          <div class="edu-item">
+            <div class="edu-title">MSc Visiting — Bioengineering (Imperial College London)</div>
+            <div class="edu-meta">Sep 2025 – Feb 2026</div>
+          </div>
 
-            state.currentIndex = newIndex;
+          <div class="edu-item">
+            <div class="edu-title">Dual MSc — Bioengineering &amp; Pharmaceutical Business (IQS)</div>
+            <div class="edu-meta">2023 – 2025</div>
+          </div>
 
-            // Move slides
-            const offset = -newIndex * 100;
-            state.track.style.transform = `translateX(${offset}%)`;
+          <div class="edu-item">
+            <div class="edu-title">BSc — Medical Biotechnology (University of Milan)</div>
+            <div class="edu-meta">2020 – 2023</div>
+          </div>
+        </div>
 
-            // Update dots
-            state.dots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === newIndex);
-            });
+        <!-- SKILLS -->
+        <div class="card">
+          <div class="kicker" style="margin-bottom:.4rem;">Skills</div>
 
-            // Update image count
-            const carousel = document.querySelectorAll('.carousel-container')[carouselIndex];
-            // ✅ Transition class (only for hero carousel)
-            if (carousel.classList.contains('hero-carousel')) {
-                carousel.classList.add('is-transitioning');
-                setTimeout(() => carousel.classList.remove('is-transitioning'), 650);
-            }
+          <!-- CHANGE: skill chips -->
+          <div class="chip-row">
+            <span class="chip">Healthcare &amp; Biotech</span>
+            <span class="chip">Strategy &amp; Innovation</span>
+            <span class="chip">Analytics / Dashboards</span>
+            <span class="chip">Early-stage ecosystem</span>
+            <span class="chip">Podcasting / Communication</span>
+            <span class="chip">Team collaboration</span>
+          </div>
 
-            carousel.querySelector('.current-index').textContent = newIndex + 1;
+          <div class="kicker" style="margin-top:1.25rem;">Languages</div>
+          <div class="chip-row">
+            <span class="chip">Italian (Native)</span>
+            <span class="chip">English (C1)</span>
+            <span class="chip">French (B1)</span>
+            <span class="chip">Spanish (Basic)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-            // ✅ UPDATE CAPTION (THIS IS THE KEY PART)
-            const activeSlide = state.slides[newIndex];
-            const captionText = activeSlide.dataset.caption;
+  <!-- =========================================================
+    7) CONTACT SECTION
+    - Simple, clean CTAs
+  ========================================================== -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="contact">
+        <div class="kicker">Contact</div>
+        <h2>Let’s build something meaningful.</h2>
 
-            const heroImage = carousel.parentElement; // .hero-image
-            const captionEl = heroImage.querySelector('.hero-image-caption.dynamic');
+        <!-- CHANGE: contact paragraph -->
+        <p>
+          I’m always happy to meet people working on healthcare innovation, biotech, and early-stage ventures.
+          If you want to connect, feel free to reach out.
+        </p>
 
-            if (captionEl && captionText) {
-                captionEl.classList.add('fade-out');
-                setTimeout(() => {
-                    captionEl.textContent = captionText;
-                    captionEl.classList.remove('fade-out');
-                }, 200);
-            }
-        }
+        <div class="contact-actions">
+          <!-- CHANGE: email -->
+          <a class="contact-link" href="mailto:francescocerni7@gmail.com">Email</a>
+          <!-- CHANGE: LinkedIn -->
+          <a class="contact-link" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
+          <!-- CHANGE: portfolio -->
+          <a class="contact-link" href="https://linktr.ee/" target="_blank" rel="noreferrer">Portfolio</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <!-- =========================================================
+    8) FOOTER
+    - Edit year + links
+  ========================================================== -->
+  <footer>
+    <p>&copy; 2026 Francesco Cerni · Built as a one-page portfolio.</p>
+  </footer>
 
-        // Attach event listeners
-        document.addEventListener('click', (e) => {
-            const prevBtn = e.target.closest('.carousel-prev');
-            const nextBtn = e.target.closest('.carousel-next');
-            const dotBtn = e.target.closest('.carousel-dot');
-
-            if (prevBtn) {
-                const carouselIndex = parseInt(prevBtn.dataset.carouselIndex, 10);
-                navigateCarousel(carouselIndex, -1);
-            }
-
-            if (nextBtn) {
-                const carouselIndex = parseInt(nextBtn.dataset.carouselIndex, 10);
-                navigateCarousel(carouselIndex, 1);
-            }
-
-            if (dotBtn) {
-                const carouselIndex = parseInt(dotBtn.dataset.carouselIndex, 10);
-                const slide = parseInt(dotBtn.dataset.slide, 10);
-                updateCarousel(carouselIndex, slide);
-            }
-        });
-
-
-        // Keyboard navigation
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowLeft') {
-                const activeCarousel = document.activeElement.closest('.carousel-container');
-                if (activeCarousel) {
-                    const carouselIndex = Array.from(document.querySelectorAll('.carousel-container')).indexOf(activeCarousel);
-                    navigateCarousel(carouselIndex, -1);
-                }
-            }
-            if (e.key === 'ArrowRight') {
-                const activeCarousel = document.activeElement.closest('.carousel-container');
-                if (activeCarousel) {
-                    const carouselIndex = Array.from(document.querySelectorAll('.carousel-container')).indexOf(activeCarousel);
-                    navigateCarousel(carouselIndex, 1);
-                }
-            }
-        });
-        // Flip Cards Functionality
-        const flipCards = document.querySelectorAll('.flip-card');
-        console.log('Flip cards trovate:', flipCards.length);
-
-        flipCards.forEach((card, index) => {
-            card.addEventListener('click', function (e) {
-                e.stopPropagation();
-                console.log('Card cliccata:', index);
-                this.classList.toggle('flipped');
-            });
-        });
-
-        // Featured Work toggle
-        const workToggle = document.querySelector('.work-toggle');
-        const workContent = document.getElementById('work-content');
-
-        if (workToggle && workContent) {
-            // Imposta lo stato iniziale come già aperto
-            workToggle.setAttribute('aria-expanded', 'true');
-            workContent.classList.add('expanded');
-            workContent.classList.remove('collapsed');
-
-            workToggle.addEventListener('click', () => {
-                const isExpanded = workToggle.getAttribute('aria-expanded') === 'true';
-                workToggle.setAttribute('aria-expanded', String(!isExpanded));
-
-                workContent.classList.toggle('expanded', !isExpanded);
-                workContent.classList.toggle('collapsed', isExpanded);
-            });
-        }
-    </script>
+  <!-- =========================================================
+    OPTIONAL: Small JS (only if you want)
+    - For example: set current year automatically
+  ========================================================== -->
+  <script>
+    // Example: auto-update year in footer (optional)
+    // const y = new Date().getFullYear();
+    // document.querySelector("footer p").innerHTML = `&copy; ${y} Francesco Cerni · Built as a one-page portfolio.`;
+  </script>
 </body>
-
 </html>
