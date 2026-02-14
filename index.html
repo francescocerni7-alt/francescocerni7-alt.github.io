@@ -637,12 +637,61 @@
             <div class="meta">Sep 2024 – Aug 2025 · Milan</div>
           </div>
           <!-- CHANGE: bullets -->
-          <ul class="bullets">
-            <li>Supported innovation initiatives within clinical study operations.</li>
-            <li>Worked with dashboards/KPIs to improve visibility and decision-making.</li>
-            <li>Collaborated cross-functionally with stakeholders and teams.</li>
-          </ul>
-        </div>
+          <script>
+/* =========================================================
+  HEADER behavior
+  - Mobile menu toggle
+  - Active section highlight on scroll
+========================================================== */
+
+// Mobile menu
+const menuBtn = document.querySelector('.menu-btn');
+const mobileMenu = document.querySelector('.mobile-menu');
+
+if (menuBtn && mobileMenu) {
+  menuBtn.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', String(isOpen));
+    mobileMenu.setAttribute('aria-hidden', String(!isOpen));
+  });
+
+  mobileMenu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded', 'false');
+      mobileMenu.setAttribute('aria-hidden', 'true');
+    });
+  });
+}
+
+// Active link on scroll
+const sections = ['about', 'experience', 'projects', 'education', 'contact']
+  .map(id => document.getElementById(id))
+  .filter(Boolean);
+
+const allNavLinks = document.querySelectorAll('.nav-link');
+
+function setActiveLink(activeId) {
+  allNavLinks.forEach(link => {
+    const href = link.getAttribute('href');
+    const isActive = href === `#${activeId}`;
+    link.classList.toggle('active', isActive);
+  });
+}
+
+const observer = new IntersectionObserver((entries) => {
+  const visible = entries
+    .filter(e => e.isIntersecting)
+    .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+  if (visible && visible.target && visible.target.id) {
+    setActiveLink(visible.target.id);
+  }
+}, { threshold: [0.25, 0.4, 0.6] });
+
+sections.forEach(section => observer.observe(section));
+</script>
+
 
         <!-- EXPERIENCE ITEM 2 -->
         <div class="timeline-item">
