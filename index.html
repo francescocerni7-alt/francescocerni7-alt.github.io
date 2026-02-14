@@ -87,7 +87,6 @@
 
     /* =========================================================
       HEADER / NAV (NO LOGO IMAGE)
-      - name only, minimal
     ========================================================== */
     header{
       position: fixed;
@@ -186,6 +185,8 @@
 
     /* =========================================================
       HERO SECTION (TEXT CENTERED + CAROUSEL)
+      - Uses your repo files in ROOT:
+        hero-1.jpg, hero-2.jpg, hero-3.jpg
     ========================================================== */
     .hero-wrap{
       margin-top: 82px;
@@ -238,7 +239,6 @@
       margin-top: .25rem;
     }
 
-    /* Hero Carousel card */
     .hero-card{
       width: min(720px, 100%);
       background:#fff;
@@ -258,7 +258,6 @@
       transition: opacity .25s ease;
     }
 
-    /* Arrows */
     .hero-carousel-arrow{
       position: absolute;
       top: 50%;
@@ -266,17 +265,14 @@
       width: 44px;
       height: 44px;
       border-radius: 999px;
-
       border: 1px solid rgba(255,255,255,.35);
       background: rgba(0,0,0,.35);
       color: #fff;
-
       cursor: pointer;
       font-size: 1.25rem;
       display: flex;
       align-items: center;
       justify-content: center;
-
       transition: all .2s ease;
       opacity: .88;
       user-select: none;
@@ -308,8 +304,7 @@
     }
 
     /* =========================================================
-      ABOUT SECTION (friendlier text + icons + biotech background)
-      ✅ PATH FIX: bg.dna.jpg is in ROOT
+      ABOUT (biotech background from ROOT: bg.dna.jpg)
     ========================================================== */
     .about-bg{
       overflow: hidden;
@@ -323,7 +318,6 @@
         url("./bg.dna.jpg");
       background-size: cover;
       background-position: center;
-      opacity: 1;
       pointer-events:none;
     }
     .about-bg .container{ position: relative; z-index: 1; }
@@ -372,8 +366,10 @@
     }
 
     /* =========================================================
-      EXPERIENCE SECTION (uniform cards + logos + interactive timeline)
-      ✅ PATH FIX: logos in ROOT
+      EXPERIENCE (use existing logos in ROOT)
+      - Available in your repo:
+        logo-sanofi.png, fidia.png
+      - For CNR/SCAR we use clean placeholders so nothing breaks.
     ========================================================== */
     .timeline-row{
       display:flex;
@@ -417,6 +413,21 @@
       border-radius: 6px;
       object-fit: contain;
       background: #fff;
+      display:block;
+    }
+    .logo-badge{
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      border: 1px solid rgba(0,0,0,.10);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size: .62rem;
+      font-weight: 900;
+      color: var(--secondary);
+      background:#fff;
+      line-height: 1;
     }
     .time-year{
       color: var(--secondary);
@@ -427,7 +438,6 @@
       display:flex;
       flex-direction:column;
       gap: 1.25rem;
-      margin-top: 0;
     }
     .timeline-item{
       background:#fff;
@@ -458,6 +468,20 @@
       border: 1px solid rgba(0,0,0,.08);
       background: #fff;
       padding: 6px;
+      display:block;
+    }
+    .company-badge{
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      border: 1px solid rgba(0,0,0,.08);
+      background:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight: 900;
+      color: var(--secondary);
+      letter-spacing: .5px;
     }
     .role{
       font-family: var(--serif);
@@ -483,8 +507,7 @@
     .bullets li{ margin-bottom: .55rem; line-height: 1.75; }
 
     /* =========================================================
-      PROJECTS
-      ✅ PATH FIX: pandora.mp4 in ROOT
+      PROJECTS (Pandora video is in ROOT: pandora.mp4)
     ========================================================== */
     .grid{
       display:grid;
@@ -514,12 +537,7 @@
       position: relative;
       overflow: hidden;
     }
-    .project img{
-      width:100%;
-      height: 100%;
-      object-fit: cover;
-      display:block;
-    }
+    .project img,
     .project video{
       width:100%;
       height: 100%;
@@ -576,8 +594,8 @@
     }
 
     /* =========================================================
-      EDUCATION + SKILLS (logos)
-      ✅ PATH FIX: logos in ROOT with names you already have
+      EDUCATION (logos in ROOT with exact names/case)
+      IQS.png, imperial.png, Unimi.png, Udl.png
     ========================================================== */
     .two-col{
       display:grid;
@@ -608,6 +626,7 @@
       background:#fff;
       padding: 6px;
       flex: 0 0 42px;
+      display:block;
     }
     .edu-title{ font-weight: 900; color: var(--primary); }
     .edu-meta{ font-size: .92rem; color: var(--secondary); margin-top: .25rem; }
@@ -623,7 +642,7 @@
     }
 
     /* =========================================================
-      CONTACT
+      CONTACT + FOOTER
     ========================================================== */
     .contact{
       text-align:center;
@@ -659,7 +678,6 @@
       color:#fff;
     }
 
-    /* Footer */
     footer{
       background: var(--primary);
       color:#fff;
@@ -675,7 +693,7 @@
 
 <body>
   <!-- =========================================================
-    HEADER (NO IMAGE NEXT TO NAME)
+    HEADER
   ========================================================== -->
   <header>
     <nav>
@@ -710,8 +728,7 @@
   <div id="top"></div>
 
   <!-- =========================================================
-    HERO (TEXT CENTERED + 3-IMAGE CAROUSEL)
-    ✅ PATH FIX: hero-1.jpg, hero-2.jpg, hero-3.jpg are in ROOT
+    HERO (carousel uses hero-1/2/3 in ROOT)
   ========================================================== -->
   <section class="hero-wrap">
     <div class="container">
@@ -745,16 +762,9 @@
           </div>
         </div>
 
-        <!-- HERO CAROUSEL -->
         <div class="hero-card hero-carousel" aria-label="Hero photo carousel">
           <div class="hero-carousel-frame">
-            <img
-              id="heroCarouselImg"
-              class="hero-carousel-img"
-              src="./hero-1.jpg"
-              alt="Francesco Cerni photo"
-            />
-
+            <img id="heroCarouselImg" class="hero-carousel-img" src="./hero-1.jpg" alt="Francesco Cerni photo" />
             <button class="hero-carousel-arrow prev" type="button" aria-label="Previous photo" id="heroCarouselPrev">❮</button>
             <button class="hero-carousel-arrow next" type="button" aria-label="Next photo" id="heroCarouselNext">❯</button>
           </div>
@@ -769,8 +779,7 @@
   </section>
 
   <!-- =========================================================
-    ABOUT (friendlier + icons + biotech background image)
-    ✅ PATH FIX: bg.dna.jpg in ROOT
+    ABOUT (bg from ROOT: bg.dna.jpg)
   ========================================================== -->
   <section class="section about-bg" id="about">
     <div class="container">
@@ -833,9 +842,7 @@
   </section>
 
   <!-- =========================================================
-    EXPERIENCE
-    ✅ PATH FIX: use logo-sanofi.png and fidia.png that are in ROOT
-    NOTE: CNR + SCAR logos are not in your repo yet -> placeholders.
+    EXPERIENCE (uses logo-sanofi.png + fidia.png in ROOT)
   ========================================================== -->
   <section class="section alt" id="experience">
     <div class="container">
@@ -844,10 +851,12 @@
 
       <div class="timeline-row" aria-label="Timeline">
         <button class="time-item" data-target="exp-scar" type="button">
+          <span class="logo-badge" aria-hidden="true">SC</span>
           <span class="time-year">2020+</span> SCAR
         </button>
 
         <button class="time-item" data-target="exp-cnr" type="button">
+          <span class="logo-badge" aria-hidden="true">CNR</span>
           <span class="time-year">2023</span> CNR
         </button>
 
@@ -866,6 +875,7 @@
         <div class="timeline-item" id="exp-scar">
           <div class="role-top">
             <div class="role-left">
+              <div class="company-badge" aria-hidden="true">SC</div>
               <div>
                 <div class="role"><span class="company">SCAR Holding</span> — Founder</div>
                 <div class="meta">Dec 2019 – Present</div>
@@ -881,6 +891,7 @@
         <div class="timeline-item" id="exp-cnr">
           <div class="role-top">
             <div class="role-left">
+              <div class="company-badge" aria-hidden="true">CNR</div>
               <div>
                 <div class="role"><span class="company">CNR</span> — Research Experience</div>
                 <div class="meta">2023 · Italy</div>
@@ -925,14 +936,12 @@
             <li>Collaborated cross-functionally with stakeholders and teams.</li>
           </ul>
         </div>
-
       </div>
     </div>
   </section>
 
   <!-- =========================================================
-    PROJECTS
-    ✅ PATH FIX: pandora.mp4 in ROOT
+    PROJECTS (pandora.mp4 is in ROOT)
   ========================================================== -->
   <section class="section" id="projects">
     <div class="container">
@@ -946,9 +955,7 @@
           </div>
           <div class="project-body">
             <div class="project-title">Pandora Project</div>
-            <p>
-              A project where I explored how technology and product thinking can support better decisions and real-world execution.
-            </p>
+            <p>A project where I explored how technology and product thinking can support better decisions and real-world execution.</p>
             <div class="tags">
               <span class="tag">Product</span>
               <span class="tag">Innovation</span>
@@ -964,9 +971,7 @@
           </div>
           <div class="project-body">
             <div class="project-title">Stunnatell Podcast</div>
-            <p>
-              Conversations about startups, innovation, and entrepreneurship — with a practical, builder mindset.
-            </p>
+            <p>Conversations about startups, innovation, and entrepreneurship — with a practical, builder mindset.</p>
             <div class="tags">
               <span class="tag">Podcast</span>
               <span class="tag">Startups</span>
@@ -982,9 +987,7 @@
           </div>
           <div class="project-body">
             <div class="project-title">Finalist — Startup Challenge</div>
-            <p>
-              Finalist project focused on building a clear product story, demo, and strong user value.
-            </p>
+            <p>Finalist project focused on building a clear product story, demo, and strong user value.</p>
             <div class="tags">
               <span class="tag">Demo</span>
               <span class="tag">Pitch</span>
@@ -1000,9 +1003,7 @@
           </div>
           <div class="project-body">
             <div class="project-title">AI Startup Location Assistant</div>
-            <p>
-              An AI tool to compare regulations and signals across countries — helping decide where it’s best to launch a startup.
-            </p>
+            <p>An AI tool to compare regulations and signals across countries — helping decide where it’s best to launch a startup.</p>
             <div class="tags">
               <span class="tag">AI</span>
               <span class="tag">Regulations</span>
@@ -1016,8 +1017,8 @@
   </section>
 
   <!-- =========================================================
-    EDUCATION
-    ✅ PATH FIX: imperial.png, IQS.png, Unimi.png, Udl.png are in ROOT
+    EDUCATION (logos in ROOT with exact names)
+    imperial.png, IQS.png, Unimi.png, Udl.png
   ========================================================== -->
   <section class="section alt" id="education">
     <div class="container">
@@ -1141,7 +1142,6 @@
       });
     }
 
-    // Active link on scroll
     const sectionIds = ['about','experience','projects','education','contact'];
     const sections = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
     const navLinks = document.querySelectorAll('.nav-link');
@@ -1160,8 +1160,7 @@
     sections.forEach(s => navObserver.observe(s));
 
     /* =========================================================
-      2) HERO CAROUSEL (3 images + captions + prev/next loop)
-      ✅ PATH FIX: hero-1.jpg, hero-2.jpg, hero-3.jpg in ROOT
+      2) HERO CAROUSEL (hero-1/2/3 in ROOT)
     ========================================================== */
     (function () {
       const img = document.getElementById("heroCarouselImg");
@@ -1186,7 +1185,6 @@
         setTimeout(() => {
           img.src = slides[index].src;
           caption.textContent = slides[index].text;
-
           img.style.opacity = "1";
           caption.classList.remove("is-fading");
         }, 180);
@@ -1206,7 +1204,7 @@
     })();
 
     /* =========================================================
-      3) EXPERIENCE TIMELINE (click -> scroll to card)
+      3) EXPERIENCE TIMELINE (click -> scroll)
     ========================================================== */
     (function () {
       const items = document.querySelectorAll('.time-item');
