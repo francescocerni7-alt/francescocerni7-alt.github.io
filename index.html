@@ -3,13 +3,13 @@
 <head>
   <!-- =========================================================
     HEAD / META
-    - Change title + social preview if you want
   ========================================================== -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Francesco Cerni | Healthcare Innovation & Startups</title>
+  <meta name="description" content="Francesco Cerni — Healthcare innovation, biotech, and startups. Pharma experience, early-stage investing, and entrepreneurship." />
 
-  <!-- Fonts (same vibe as your example) -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital@0;1&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
@@ -17,9 +17,9 @@
   <style>
     /* =========================================================
       GLOBAL STYLES / THEME
-      - Edit colors + fonts here
     ========================================================== */
     * { margin: 0; padding: 0; box-sizing: border-box; }
+
     :root{
       --primary:#1a1a1a;
       --secondary:#4a4a4a;
@@ -30,7 +30,7 @@
       --sans:'Space Grotesk', sans-serif;
 
       --maxw:1200px;
-      --radius:10px;
+      --radius:12px;
       --shadow:0 10px 28px rgba(0,0,0,.10);
       --border:1px solid rgba(0,0,0,.10);
     }
@@ -46,7 +46,7 @@
 
     /* Utility */
     .container{ max-width: var(--maxw); margin: 0 auto; padding: 0 2rem; }
-    .section{ padding: 5rem 0; }
+    .section{ padding: 5rem 0; position: relative; }
     .section.alt{ background: var(--light); }
     .kicker{
       font-size:.78rem;
@@ -64,12 +64,30 @@
     }
     p{ color: var(--secondary); }
 
-    /* Make anchor jumps look nice with fixed header */
     section{ scroll-margin-top: 92px; }
 
+    /* Buttons */
+    .btn{
+      display:inline-block;
+      padding: .75rem 1.25rem;
+      border-radius: 10px;
+      border: 2px solid var(--primary);
+      text-decoration:none;
+      font-weight: 800;
+      font-size: .82rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all .25s ease;
+      user-select: none;
+    }
+    .btn.primary{ background: var(--primary); color:#fff; }
+    .btn.primary:hover{ background: transparent; color: var(--primary); }
+    .btn.ghost{ background: transparent; color: var(--primary); }
+    .btn.ghost:hover{ background: var(--primary); color:#fff; }
+
     /* =========================================================
-      HEADER / NAV
-      - Edit your name/logo + navigation labels here
+      HEADER / NAV (NO LOGO IMAGE)
+      - name only, minimal
     ========================================================== */
     header{
       position: fixed;
@@ -92,7 +110,6 @@
     .logo{
       display:flex;
       align-items:center;
-      gap:.75rem;
       text-decoration:none;
       color: var(--primary);
     }
@@ -103,13 +120,7 @@
       letter-spacing:-.5px;
       line-height:1;
     }
-    .logo-img{
-      height: 30px; width: 30px;
-      border-radius: 8px;
-      object-fit: cover;
-      opacity:.92;
-      border: var(--border);
-    }
+
     .nav-links{
       list-style:none;
       display:flex;
@@ -132,59 +143,81 @@
       gap:.75rem;
       align-items:center;
     }
-    .btn{
-      display:inline-block;
-      padding: .75rem 1.25rem;
-      border-radius: 8px;
-      border: 2px solid var(--primary);
-      text-decoration:none;
-      font-weight: 800;
-      font-size: .82rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      transition: all .25s ease;
+
+    /* Mobile menu */
+    .menu-btn{
+      display:none;
+      background: transparent;
+      border: 2px solid rgba(0,0,0,.18);
+      border-radius: 10px;
+      padding: .55rem .7rem;
+      font-size: 1rem;
+      cursor:pointer;
+      transition: all .2s ease;
     }
-    .btn.primary{ background: var(--primary); color:#fff; }
-    .btn.primary:hover{ background: transparent; color: var(--primary); }
-    .btn.ghost{ background: transparent; color: var(--primary); }
-    .btn.ghost:hover{ background: var(--primary); color:#fff; }
+    .menu-btn:hover{ border-color: rgba(0,0,0,.35); }
+
+    .mobile-menu{
+      display:none;
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 0 2rem 1.25rem;
+    }
+    .mobile-menu a{
+      display:block;
+      padding: .9rem 0;
+      border-top: 1px solid rgba(0,0,0,.08);
+      text-decoration:none;
+      color: var(--secondary);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .6px;
+      font-size: .92rem;
+    }
+    .mobile-menu a:hover{ color: var(--accent); }
+
+    .nav-link.active{ color: var(--accent); }
 
     @media (max-width: 900px){
       .nav-links{ display:none; }
+      .menu-btn{ display:inline-flex; align-items:center; justify-content:center; }
+      .mobile-menu.open{ display:block; }
     }
 
     /* =========================================================
-      HERO SECTION
-      - Edit the main intro text + hero image here
+      HERO SECTION (TEXT CENTERED + CAROUSEL)
     ========================================================== */
     .hero-wrap{
-      margin-top: 82px; /* keep space for fixed header */
+      margin-top: 82px;
       background: linear-gradient(135deg, #fafaf8 0%, #f5f5f5 100%);
       padding: 4.5rem 0 3.5rem;
     }
     .hero{
-      display:grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap: 3.5rem;
-      align-items:center;
+      display:flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 1.5rem;
     }
     .hero h1{
       font-family: var(--serif);
       font-size: 3.2rem;
       line-height: 1.05;
       letter-spacing: -1px;
-      margin-bottom: 1rem;
+      margin-bottom: .25rem;
     }
     .hero-lead{
       font-size: 1.06rem;
       line-height: 1.9;
-      margin-bottom: 1.25rem;
+      margin-bottom: .25rem;
+      max-width: 80ch;
     }
     .pill-row{
       display:flex;
       flex-wrap:wrap;
       gap: .6rem;
-      margin: 1.35rem 0 2rem;
+      margin: 1.15rem 0 1.25rem;
+      justify-content: center;
     }
     .pill{
       display:inline-flex;
@@ -197,39 +230,103 @@
       font-size: .86rem;
       color: var(--secondary);
     }
-    .hero-actions{ display:flex; gap: 1rem; flex-wrap: wrap; }
+    .hero-actions{
+      display:flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: .25rem;
+    }
 
+    /* Hero Carousel card */
     .hero-card{
+      width: min(720px, 100%);
       background:#fff;
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       overflow:hidden;
       border: 1px solid rgba(0,0,0,.06);
+      margin-top: 1.2rem;
     }
-    .hero-card img{
-      width:100%;
+    .hero-carousel-frame{ position: relative; }
+
+    .hero-carousel-img{
+      width: 100%;
       height: 420px;
       object-fit: cover;
-      display:block;
+      display: block;
+      transition: opacity .25s ease;
     }
+
+    /* Arrows */
+    .hero-carousel-arrow{
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+
+      border: 1px solid rgba(255,255,255,.35);
+      background: rgba(0,0,0,.35);
+      color: #fff;
+
+      cursor: pointer;
+      font-size: 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      transition: all .2s ease;
+      opacity: .88;
+      user-select: none;
+    }
+    .hero-carousel-arrow:hover{
+      background: rgba(0,0,0,.55);
+      opacity: 1;
+      transform: translateY(-50%) scale(1.05);
+    }
+    .hero-carousel-arrow.prev{ left: 14px; }
+    .hero-carousel-arrow.next{ right: 14px; }
+
     .hero-caption{
       padding: .85rem 1rem;
       font-size: .92rem;
       color: var(--secondary);
       font-style: italic;
       text-align:center;
+      border-top: 1px solid rgba(0,0,0,.06);
+    }
+    .hero-caption.is-fading{
+      opacity: 0;
+      transition: opacity .18s ease;
     }
 
     @media (max-width: 900px){
-      .hero{ grid-template-columns: 1fr; }
       .hero h1{ font-size: 2.35rem; }
-      .hero-card img{ height: 340px; }
+      .hero-carousel-img{ height: 340px; }
     }
 
     /* =========================================================
-      ABOUT SECTION
-      - Edit the story + highlights here
+      ABOUT SECTION (friendlier text + icons + biotech background)
     ========================================================== */
+    .about-bg{
+      overflow: hidden;
+    }
+    .about-bg::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(rgba(255,255,255,.92), rgba(255,255,255,.92)),
+        url("./assets/bg-dna.jpg");
+      background-size: cover;
+      background-position: center;
+      opacity: 1;
+      pointer-events:none;
+    }
+    .about-bg .container{ position: relative; z-index: 1; }
+
     .about-grid{
       display:grid;
       grid-template-columns: 1.1fr .9fr;
@@ -245,27 +342,28 @@
       box-shadow: 0 6px 18px rgba(0,0,0,.06);
       padding: 1.6rem;
     }
+
     .list{
       list-style:none;
       padding-left:0;
       display:flex;
       flex-direction:column;
-      gap:.9rem;
-      margin-top: .75rem;
+      gap:1rem;
+      margin-top: .9rem;
     }
     .list li{
-      display:grid;
-      grid-template-columns: 22px 1fr;
-      gap:.65rem;
-      align-items:start;
+      display:flex;
+      gap:.75rem;
+      align-items:flex-start;
       color: var(--secondary);
       line-height: 1.65;
     }
-    .list li::before{
-      content:"→";
-      font-weight: 900;
+    .icon{
+      width: 20px;
+      height: 20px;
+      flex: 0 0 20px;
+      margin-top: 2px;
       color: var(--accent);
-      transform: translateY(2px);
     }
 
     @media (max-width: 900px){
@@ -273,14 +371,61 @@
     }
 
     /* =========================================================
-      EXPERIENCE SECTION (timeline)
-      - Edit roles + bullets here
+      EXPERIENCE SECTION (uniform cards + logos + interactive timeline)
     ========================================================== */
+    .timeline-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap: 1rem;
+      align-items:center;
+      margin: 1.25rem 0 2rem;
+      padding: 1rem;
+      background: rgba(255,255,255,.75);
+      border: var(--border);
+      border-radius: 14px;
+    }
+    .time-item{
+      display:flex;
+      align-items:center;
+      gap:.65rem;
+      padding:.55rem .75rem;
+      border-radius: 999px;
+      border: 1px solid rgba(0,0,0,.10);
+      background: #fff;
+      cursor: pointer;
+      transition: all .2s ease;
+      text-decoration:none;
+      color: var(--primary);
+      font-weight: 800;
+      font-size: .82rem;
+      letter-spacing: .4px;
+      user-select:none;
+    }
+    .time-item:hover{
+      transform: translateY(-1px);
+      border-color: rgba(0,0,0,.20);
+    }
+    .time-item.active{
+      border-color: rgba(212,175,55,.7);
+      box-shadow: 0 8px 18px rgba(212,175,55,.18);
+    }
+    .time-logo{
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      object-fit: contain;
+      background: #fff;
+    }
+    .time-year{
+      color: var(--secondary);
+      font-weight: 800;
+    }
+
     .timeline{
       display:flex;
       flex-direction:column;
       gap: 1.25rem;
-      margin-top: 1.5rem;
+      margin-top: 0;
     }
     .timeline-item{
       background:#fff;
@@ -292,24 +437,41 @@
     .role-top{
       display:flex;
       flex-wrap:wrap;
-      align-items:baseline;
+      align-items:flex-start;
       justify-content:space-between;
-      gap: .75rem;
-      margin-bottom: .75rem;
+      gap: 1rem;
+      margin-bottom: .9rem;
+    }
+    .role-left{
+      display:flex;
+      gap: .9rem;
+      align-items:flex-start;
+      min-width: 260px;
+    }
+    .company-logo{
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      object-fit: contain;
+      border: 1px solid rgba(0,0,0,.08);
+      background: #fff;
+      padding: 6px;
     }
     .role{
       font-family: var(--serif);
       font-size: 1.35rem;
       letter-spacing: -.3px;
+      line-height: 1.15;
     }
     .company{
-      font-weight: 800;
+      font-weight: 900;
       color: var(--primary);
     }
     .meta{
       font-size: .9rem;
       color: var(--secondary);
       white-space: nowrap;
+      margin-top: 2px;
     }
     .bullets{
       margin-top: .75rem;
@@ -319,8 +481,7 @@
     .bullets li{ margin-bottom: .55rem; line-height: 1.75; }
 
     /* =========================================================
-      PROJECTS SECTION (cards grid)
-      - Add/remove cards freely
+      PROJECTS SECTION (rename "Work" -> "Projects")
     ========================================================== */
     .grid{
       display:grid;
@@ -336,16 +497,29 @@
       box-shadow: 0 8px 22px rgba(0,0,0,.08);
       display:flex;
       flex-direction:column;
-      min-height: 360px;
+      min-height: 380px;
       transition: transform .25s ease, box-shadow .25s ease;
     }
     .project:hover{
       transform: translateY(-3px);
       box-shadow: 0 14px 34px rgba(0,0,0,.12);
     }
+    .project-media{
+      width:100%;
+      height: 210px;
+      background: #f0f0f0;
+      position: relative;
+      overflow: hidden;
+    }
     .project img{
       width:100%;
-      height: 190px;
+      height: 100%;
+      object-fit: cover;
+      display:block;
+    }
+    .project video{
+      width:100%;
+      height: 100%;
       object-fit: cover;
       display:block;
     }
@@ -379,7 +553,7 @@
       border-radius: 999px;
       background: rgba(255,255,255,.75);
     }
-    .project a{
+    .project a.project-link{
       margin-top: auto;
       display:inline-flex;
       width: fit-content;
@@ -392,15 +566,14 @@
       gap:.5rem;
       align-items:center;
     }
-    .project a:hover{ text-decoration: underline; }
+    .project a.project-link:hover{ text-decoration: underline; }
 
     @media (max-width: 900px){
       .grid{ grid-template-columns: 1fr; }
     }
 
     /* =========================================================
-      EDUCATION + SKILLS (two columns)
-      - Edit entries and skill chips
+      EDUCATION + SKILLS (logos + Erasmus added)
     ========================================================== */
     .two-col{
       display:grid;
@@ -416,8 +589,22 @@
       border-top: 1px solid rgba(0,0,0,.08);
       padding-top: 1rem;
       margin-top: 1rem;
+      display:flex;
+      gap: .9rem;
+      align-items:flex-start;
     }
     .edu-item:first-child{ border-top: none; padding-top: 0; margin-top: 0; }
+
+    .edu-logo{
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      object-fit: contain;
+      border: 1px solid rgba(0,0,0,.08);
+      background:#fff;
+      padding: 6px;
+      flex: 0 0 42px;
+    }
     .edu-title{ font-weight: 900; color: var(--primary); }
     .edu-meta{ font-size: .92rem; color: var(--secondary); margin-top: .25rem; }
 
@@ -432,8 +619,7 @@
     }
 
     /* =========================================================
-      CONTACT SECTION
-      - Edit email / links here
+      CONTACT
     ========================================================== */
     .contact{
       text-align:center;
@@ -485,53 +671,52 @@
 
 <body>
   <!-- =========================================================
-    1) HEADER / NAV (fixed)
-    - Replace logo image + update links
+    HEADER (NO IMAGE NEXT TO NAME)
   ========================================================== -->
   <header>
     <nav>
-      <a class="logo" href="#top">
-        <!-- CHANGE: logo image path -->
-        <img class="logo-img" src="./assets/profile.jpg" alt="Francesco Cerni">
-        <!-- CHANGE: name -->
+      <a class="logo" href="#top" aria-label="Go to top">
         <span class="logo-name">Francesco Cerni</span>
       </a>
 
-      <!-- NAV LINKS (desktop) -->
-      <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#projects">Work</a></li>
-        <li><a href="#education">Education</a></li>
-        <li><a href="#contact">Contact</a></li>
+      <ul class="nav-links" aria-label="Primary">
+        <li><a class="nav-link" href="#about">About</a></li>
+        <li><a class="nav-link" href="#experience">Experience</a></li>
+        <li><a class="nav-link" href="#projects">Projects</a></li>
+        <li><a class="nav-link" href="#education">Education</a></li>
+        <li><a class="nav-link" href="#contact">Contact</a></li>
       </ul>
 
-      <!-- RIGHT CTA BUTTONS -->
       <div class="nav-cta">
-        <!-- CHANGE: portfolio link (Linktree / LinkedIn / website) -->
         <a class="btn ghost" href="https://linktr.ee/Fracerni7" target="_blank" rel="noreferrer">Portfolio</a>
         <a class="btn primary" href="#contact">Reach out</a>
+        <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false">☰</button>
       </div>
     </nav>
+
+    <div class="mobile-menu" aria-hidden="true">
+      <a class="nav-link" href="#about">About</a>
+      <a class="nav-link" href="#experience">Experience</a>
+      <a class="nav-link" href="#projects">Projects</a>
+      <a class="nav-link" href="#education">Education</a>
+      <a class="nav-link" href="#contact">Contact</a>
+    </div>
   </header>
 
-  <!-- Anchor for "back to top" -->
   <div id="top"></div>
 
   <!-- =========================================================
-    2) HERO SECTION
-    - Main positioning: Innovation + Healthcare + Startups
-    - Replace hero image + caption
+    HERO (TEXT CENTERED + 3-IMAGE CAROUSEL)
+    - Images must be inside /assets as:
+      Io.jpg, calcio.jpg, stunnatell.jpg
   ========================================================== -->
   <section class="hero-wrap">
     <div class="container">
       <div class="hero">
-        <!-- HERO TEXT -->
+
         <div>
-          <!-- CHANGE: headline -->
           <h1>Hi, I’m Francesco Cerni.</h1>
 
-          <!-- CHANGE: lead paragraph (your positioning) -->
           <p class="hero-lead">
             I’m driven by a deep passion for <strong>innovation in healthcare</strong>, working at the intersection of
             <strong>biotechnology, business, and the startup ecosystem</strong>.
@@ -539,13 +724,11 @@
             I’m focused on translating scientific ideas into real-world impact.
           </p>
 
-          <!-- OPTIONAL: short second paragraph -->
           <p class="hero-lead" style="margin-top:.2rem;">
             I founded <strong>SCAR Holding</strong> to invest in early-stage scientific healthcare projects, and I host a
             podcast exploring <strong>startups, innovation, and entrepreneurship</strong>.
           </p>
 
-          <!-- QUICK HIGHLIGHT PILLS (edit freely) -->
           <div class="pill-row">
             <span class="pill">Healthcare Innovation</span>
             <span class="pill">Biotech + Business</span>
@@ -553,254 +736,295 @@
             <span class="pill">Pharma Experience</span>
           </div>
 
-          <!-- CTA BUTTONS -->
           <div class="hero-actions">
-            <!-- CHANGE: your email -->
             <a class="btn primary" href="mailto:francescocerni7@gmail.com">Email me</a>
-            <!-- CHANGE: LinkedIn / portfolio -->
+            <!-- ALL LinkedIn buttons use YOUR LINK -->
             <a class="btn ghost" href="https://www.linkedin.com/in/francesco-cerni/" target="_blank" rel="noreferrer">LinkedIn</a>
           </div>
         </div>
 
-        <!-- HERO IMAGE CARD -->
-        <div class="hero-card">
-          <!-- CHANGE: hero image path -->
-          <img src="./assets/hero.jpg" alt="Francesco Cerni - Hero image">
-          <!-- CHANGE: caption -->
-          <div class="hero-caption">Innovation, healthcare, and the energy of building.</div>
+        <!-- HERO CAROUSEL -->
+        <div class="hero-card hero-carousel" aria-label="Hero photo carousel">
+          <div class="hero-carousel-frame">
+            <img
+              id="heroCarouselImg"
+              class="hero-carousel-img"
+              src="./assets/Io.jpg"
+              alt="Francesco Cerni photo"
+            />
+
+            <button class="hero-carousel-arrow prev" type="button" aria-label="Previous photo" id="heroCarouselPrev">❮</button>
+            <button class="hero-carousel-arrow next" type="button" aria-label="Next photo" id="heroCarouselNext">❯</button>
+          </div>
+
+          <div class="hero-caption" id="heroCarouselCaption">
+            At the stadium — football has always been part of my life.
+          </div>
         </div>
+
       </div>
     </div>
   </section>
 
   <!-- =========================================================
-    3) ABOUT SECTION
-    - Longer story + highlights card
+    ABOUT (friendlier + icons + biotech background image)
+    - Background image: /assets/bg-dna.jpg
   ========================================================== -->
-  <section class="section" id="about">
+  <section class="section about-bg" id="about">
     <div class="container">
       <div class="kicker">About</div>
       <h2>Innovation-minded, healthcare-driven.</h2>
 
       <div class="about-grid">
-        <!-- LEFT: STORY -->
         <div class="about">
-          <!-- CHANGE: your about paragraphs -->
           <p>
-            I’m passionate about healthcare, biotechnology, and innovation, and I enjoy working across disciplines —
-            from scientific depth to business execution. My background combines Bioengineering and Business, with hands-on
-            experience in the pharmaceutical industry.
+            I’m really into healthcare, biotech, and the kind of innovation that actually makes a difference.
+            I like working across disciplines — where scientific depth meets execution and real-world outcomes.
           </p>
           <p>
-            Alongside pharma, I’m deeply engaged in the startup ecosystem. Through SCAR Holding, I explore and support
-            early-stage scientific projects focused on healthcare. I also host a podcast where I discuss innovation,
-            entrepreneurship, and how new ideas turn into real products and companies.
+            I’ve gained experience in the pharmaceutical industry at <strong>Sanofi</strong> and <strong>Fidia Farmaceutici</strong>,
+            and I enjoy turning complex topics into something actionable — from strategy to practical delivery.
           </p>
           <p>
-            Outside of work, football has been a constant in my life. You’ll also find me climbing or running in the park —
-            not particularly fast, so you’ll have no trouble catching up.
+            Outside of corporate work, I’m active in the startup ecosystem. I founded <strong>SCAR Holding</strong> to explore and support
+            early-stage scientific healthcare projects, and I host a podcast where I talk about startups, innovation, and entrepreneurship.
           </p>
         </div>
 
-        <!-- RIGHT: HIGHLIGHTS CARD -->
         <div class="card">
           <div class="kicker" style="margin-bottom:.4rem;">Highlights</div>
+
           <ul class="list">
-            <!-- CHANGE: highlight bullets -->
-            <li>Pharma experience in Strategy/Innovation and R&amp;D contexts.</li>
-            <li>Founder of an early-stage initiative investing in scientific healthcare projects.</li>
-            <li>Podcast host on innovation and entrepreneurship.</li>
-            <li>Interdisciplinary: biotech rigor + business mindset.</li>
+            <li>
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2l3 7h7l-5.5 4 2 7-6.5-4.5L5.5 20l2-7L2 9h7l3-7z"/>
+              </svg>
+              Healthcare innovation mindset with a biotech + business foundation.
+            </li>
+            <li>
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 19V5m0 14h16M8 15V9m4 6V7m4 8v-5"/>
+              </svg>
+              Pharma experience: structured execution, cross-functional collaboration, KPI thinking.
+            </li>
+            <li>
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 21s7-4.5 7-10V5l-7-3-7 3v6c0 5.5 7 10 7 10z"/>
+              </svg>
+              Early-stage ecosystem: evaluating ideas, research-driven projects, and health impact.
+            </li>
+            <li>
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 4h16v12H5.5L4 17.5V4z"/><path d="M8 20h8"/>
+              </svg>
+              Communication: podcast host, storytelling, and stakeholder alignment.
+            </li>
           </ul>
+
+          <div style="margin-top:1.25rem; display:flex; gap:.75rem; flex-wrap:wrap;">
+            <a class="btn ghost" href="https://linktr.ee/Fracerni7" target="_blank" rel="noreferrer">Portfolio</a>
+            <a class="btn ghost" href="https://www.linkedin.com/in/francesco-cerni/" target="_blank" rel="noreferrer">LinkedIn</a>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- =========================================================
-    4) EXPERIENCE SECTION
-    - Add/remove timeline items as needed
+    EXPERIENCE (uniform format + logos + CNR + interactive timeline)
+    - Logos required in /assets:
+      logo-sanofi.png, logo-fidia.png, logo-cnr.png, logo-scar.png
   ========================================================== -->
   <section class="section alt" id="experience">
     <div class="container">
       <div class="kicker">Experience</div>
       <h2>Where I’ve built experience.</h2>
 
+      <!-- Interactive timeline (2020+) -->
+      <div class="timeline-row" aria-label="Timeline">
+        <button class="time-item" data-target="exp-scar" type="button">
+          <img class="time-logo" src="./assets/logo-scar.png" alt="SCAR Holding logo">
+          <span class="time-year">2020+</span> SCAR
+        </button>
+
+        <button class="time-item" data-target="exp-cnr" type="button">
+          <img class="time-logo" src="./assets/logo-cnr.png" alt="CNR logo">
+          <span class="time-year">2023</span> CNR
+        </button>
+
+        <button class="time-item" data-target="exp-fidia" type="button">
+          <img class="time-logo" src="./assets/logo-fidia.png" alt="Fidia logo">
+          <span class="time-year">2023</span> Fidia
+        </button>
+
+        <button class="time-item" data-target="exp-sanofi" type="button">
+          <img class="time-logo" src="./assets/logo-sanofi.png" alt="Sanofi logo">
+          <span class="time-year">2024–25</span> Sanofi
+        </button>
+      </div>
+
       <div class="timeline">
-        <!-- EXPERIENCE ITEM 1 -->
-        <div class="timeline-item">
+        <!-- SCAR Holding -->
+        <div class="timeline-item" id="exp-scar">
           <div class="role-top">
-            <div class="role">
-              <span class="company">Sanofi</span> — Clinical Study Unit Intern (Strategy &amp; Innovation)
+            <div class="role-left">
+              <img class="company-logo" src="./assets/logo-scar.png" alt="SCAR Holding logo">
+              <div>
+                <div class="role"><span class="company">SCAR Holding</span> — Founder</div>
+                <div class="meta">Dec 2019 – Present</div>
+              </div>
             </div>
-            <!-- CHANGE: dates + location -->
-            <div class="meta">Sep 2024 – Aug 2025 · Milan</div>
-          </div>
-          <!-- CHANGE: bullets -->
-          <script>
-/* =========================================================
-  HEADER behavior
-  - Mobile menu toggle
-  - Active section highlight on scroll
-========================================================== */
-
-// Mobile menu
-const menuBtn = document.querySelector('.menu-btn');
-const mobileMenu = document.querySelector('.mobile-menu');
-
-if (menuBtn && mobileMenu) {
-  menuBtn.addEventListener('click', () => {
-    const isOpen = mobileMenu.classList.toggle('open');
-    menuBtn.setAttribute('aria-expanded', String(isOpen));
-    mobileMenu.setAttribute('aria-hidden', String(!isOpen));
-  });
-
-  mobileMenu.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => {
-      mobileMenu.classList.remove('open');
-      menuBtn.setAttribute('aria-expanded', 'false');
-      mobileMenu.setAttribute('aria-hidden', 'true');
-    });
-  });
-}
-
-// Active link on scroll
-const sections = ['about', 'experience', 'projects', 'education', 'contact']
-  .map(id => document.getElementById(id))
-  .filter(Boolean);
-
-const allNavLinks = document.querySelectorAll('.nav-link');
-
-function setActiveLink(activeId) {
-  allNavLinks.forEach(link => {
-    const href = link.getAttribute('href');
-    const isActive = href === `#${activeId}`;
-    link.classList.toggle('active', isActive);
-  });
-}
-
-const observer = new IntersectionObserver((entries) => {
-  const visible = entries
-    .filter(e => e.isIntersecting)
-    .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-
-  if (visible && visible.target && visible.target.id) {
-    setActiveLink(visible.target.id);
-  }
-}, { threshold: [0.25, 0.4, 0.6] });
-
-sections.forEach(section => observer.observe(section));
-</script>
-
-
-        <!-- EXPERIENCE ITEM 2 -->
-        <div class="timeline-item">
-          <div class="role-top">
-            <div class="role">
-              <span class="company">Fidia Farmaceutici</span> — R&amp;D Internship
-            </div>
-            <div class="meta">Aug 2023 · Italy</div>
-          </div>
-          <ul class="bullets">
-            <li>Supported R&amp;D activities and scientific workflows.</li>
-            <li>Developed exposure to pharma research environments and processes.</li>
-          </ul>
-        </div>
-
-        <!-- EXPERIENCE ITEM 3 -->
-        <div class="timeline-item">
-          <div class="role-top">
-            <div class="role">
-              <span class="company">SCAR Holding</span> — Founder
-            </div>
-            <div class="meta">Dec 2019 – Present</div>
           </div>
           <ul class="bullets">
             <li>Early-stage investing initiative focused on scientific healthcare projects.</li>
             <li>Exploring the intersection of research, entrepreneurship, and product impact.</li>
           </ul>
         </div>
+
+        <!-- CNR -->
+        <div class="timeline-item" id="exp-cnr">
+          <div class="role-top">
+            <div class="role-left">
+              <img class="company-logo" src="./assets/logo-cnr.png" alt="CNR logo">
+              <div>
+                <div class="role"><span class="company">CNR</span> — Research Experience</div>
+                <div class="meta">2023 · Italy</div>
+              </div>
+            </div>
+          </div>
+          <ul class="bullets">
+            <li>Research-oriented experience in a scientific environment (health/biotech context).</li>
+            <li>Applied analytical thinking to structured research workflows and documentation.</li>
+          </ul>
+        </div>
+
+        <!-- Fidia -->
+        <div class="timeline-item" id="exp-fidia">
+          <div class="role-top">
+            <div class="role-left">
+              <img class="company-logo" src="./assets/logo-fidia.png" alt="Fidia logo">
+              <div>
+                <div class="role"><span class="company">Fidia Farmaceutici</span> — R&amp;D Internship</div>
+                <div class="meta">Aug 2023 · Italy</div>
+              </div>
+            </div>
+          </div>
+          <ul class="bullets">
+            <li>Supported R&amp;D activities and scientific workflows.</li>
+            <li>Built exposure to pharma research environments and processes.</li>
+          </ul>
+        </div>
+
+        <!-- Sanofi -->
+        <div class="timeline-item" id="exp-sanofi">
+          <div class="role-top">
+            <div class="role-left">
+              <img class="company-logo" src="./assets/logo-sanofi.png" alt="Sanofi logo">
+              <div>
+                <div class="role"><span class="company">Sanofi</span> — Clinical Study Unit Intern (Strategy &amp; Innovation)</div>
+                <div class="meta">Sep 2024 – Aug 2025 · Milan</div>
+              </div>
+            </div>
+          </div>
+          <ul class="bullets">
+            <li>Supported innovation initiatives within clinical study operations.</li>
+            <li>Worked with dashboards/KPIs to improve visibility and decision-making.</li>
+            <li>Collaborated cross-functionally with stakeholders and teams.</li>
+          </ul>
+        </div>
+
       </div>
     </div>
   </section>
 
   <!-- =========================================================
-    5) PROJECTS / WORK SECTION
-    - Each card: image + short story + tags + link
+    PROJECTS (renamed)
+    - Pandora: uses /assets/pandora.mp4 + link button
+    - Stunnatell: /assets/stunnatell.jpg + YouTube link
+    - Startup challenge finalist: https://viventech.vercel.app/demo
+    - AI startup regulations: https://aistudio.google.com/apps/drive/...
   ========================================================== -->
   <section class="section" id="projects">
     <div class="container">
-      <div class="kicker">Work</div>
-      <h2>Selected projects & interests.</h2>
+      <div class="kicker">Projects</div>
+      <h2>Things I’ve built (and keep building).</h2>
 
       <div class="grid">
-        <!-- PROJECT CARD 1 -->
+        <!-- Pandora project (video) -->
         <article class="project">
-          <!-- CHANGE: image -->
-          <img src="./assets/project-1.jpg" alt="Project 1">
+          <div class="project-media">
+            <video src="./assets/pandora.mp4" controls preload="metadata"></video>
+          </div>
           <div class="project-body">
-            <div class="project-title">Healthcare KPI &amp; Decision Dashboards</div>
+            <div class="project-title">Pandora Project</div>
             <p>
-              Building clear, decision-friendly views for healthcare operations — turning complexity into actions.
+              A project where I explored how technology and product thinking can support better decisions and real-world execution.
             </p>
             <div class="tags">
-              <span class="tag">Analytics</span>
+              <span class="tag">Product</span>
+              <span class="tag">Innovation</span>
               <span class="tag">Healthcare</span>
-              <span class="tag">Impact</span>
             </div>
-            <!-- CHANGE: optional link -->
-            <a href="#" target="_blank" rel="noreferrer">Read more <span>→</span></a>
+            <a class="project-link" href="#" target="_blank" rel="noreferrer">Open link →</a>
           </div>
         </article>
 
-        <!-- PROJECT CARD 2 -->
+        <!-- Stunnatell podcast -->
         <article class="project">
-          <img src="./assets/project-2.jpg" alt="Project 2">
-          <div class="project-body">
-            <div class="project-title">Early-stage Scientific Investing</div>
-            <p>
-              Exploring early-stage projects where scientific depth meets founder ambition — focused on healthcare.
-            </p>
-            <div class="tags">
-              <span class="tag">Startups</span>
-              <span class="tag">Biotech</span>
-              <span class="tag">VC</span>
-            </div>
-            <a href="#" target="_blank" rel="noreferrer">SCAR Holding <span>→</span></a>
+          <div class="project-media">
+            <img src="./assets/stunnatell.jpg" alt="Stunnatell podcast">
           </div>
-        </article>
-
-        <!-- PROJECT CARD 3 -->
-        <article class="project">
-          <img src="./assets/project-3.jpg" alt="Project 3">
           <div class="project-body">
-            <div class="project-title">Podcast: Innovation &amp; Entrepreneurship</div>
+            <div class="project-title">Stunnatell Podcast</div>
             <p>
-              Conversations about startups, technology, and how new ideas become products and companies.
+              Conversations about startups, innovation, and entrepreneurship — with a practical, builder mindset.
             </p>
             <div class="tags">
-              <span class="tag">Media</span>
+              <span class="tag">Podcast</span>
               <span class="tag">Startups</span>
               <span class="tag">Innovation</span>
             </div>
-            <a href="#" target="_blank" rel="noreferrer">Listen <span>→</span></a>
+            <a class="project-link" href="https://www.youtube.com/@stunnatell" target="_blank" rel="noreferrer">Watch on YouTube →</a>
           </div>
         </article>
 
-        <!-- PROJECT CARD 4 -->
+        <!-- Finalista startup challenge -->
         <article class="project">
-          <img src="./assets/project-4.jpg" alt="Project 4">
+          <div class="project-media">
+            <!-- optional screenshot; replace if you want -->
+            <img src="./assets/project-vivatech.jpg" alt="Startup challenge finalist">
+          </div>
           <div class="project-body">
-            <div class="project-title">Biotech Research &amp; Applied Science</div>
+            <div class="project-title">Finalist — Startup Challenge</div>
             <p>
-              Hands-on exposure to research workflows and the scientific foundations behind healthcare innovation.
+              Finalist project focused on building a clear product story, demo, and strong user value.
             </p>
             <div class="tags">
-              <span class="tag">Research</span>
-              <span class="tag">Biotech</span>
-              <span class="tag">Healthcare</span>
+              <span class="tag">Demo</span>
+              <span class="tag">Pitch</span>
+              <span class="tag">Startups</span>
             </div>
-            <a href="#" target="_blank" rel="noreferrer">Details <span>→</span></a>
+            <a class="project-link" href="https://viventech.vercel.app/demo" target="_blank" rel="noreferrer">Open demo →</a>
+          </div>
+        </article>
+
+        <!-- AI startup regulations -->
+        <article class="project">
+          <div class="project-media">
+            <!-- optional screenshot; replace if you want -->
+            <img src="./assets/project-aistudio.jpg" alt="AI startup regulations assistant">
+          </div>
+          <div class="project-body">
+            <div class="project-title">AI Startup Location Assistant</div>
+            <p>
+              An AI tool to compare regulations and signals across countries — helping decide where it’s best to launch a startup.
+            </p>
+            <div class="tags">
+              <span class="tag">AI</span>
+              <span class="tag">Regulations</span>
+              <span class="tag">Startups</span>
+            </div>
+            <a class="project-link" href="https://aistudio.google.com/apps/drive/1GVoH3Z1eQj6CJ9t5bIme8zunnsvnXlQl?showPreview=true&showAssistant=true" target="_blank" rel="noreferrer">Open app →</a>
           </div>
         </article>
       </div>
@@ -808,9 +1032,9 @@ sections.forEach(section => observer.observe(section));
   </section>
 
   <!-- =========================================================
-    6) EDUCATION + SKILLS SECTION
-    - Left: education list
-    - Right: skills chips
+    EDUCATION (logos + Erasmus Universitat de Lleida)
+    - Logos required in /assets:
+      logo-imperial.png, logo-iqs.png, logo-unimi.png, logo-udl.png
   ========================================================== -->
   <section class="section alt" id="education">
     <div class="container">
@@ -822,20 +1046,36 @@ sections.forEach(section => observer.observe(section));
         <div class="card">
           <div class="kicker" style="margin-bottom:.4rem;">Education</div>
 
-          <!-- CHANGE: education entries -->
           <div class="edu-item">
-            <div class="edu-title">MSc Visiting — Bioengineering (Imperial College London)</div>
-            <div class="edu-meta">Sep 2025 – Feb 2026</div>
+            <img class="edu-logo" src="./assets/logo-imperial.png" alt="Imperial College London logo">
+            <div>
+              <div class="edu-title">MSc Visiting — Bioengineering (Imperial College London)</div>
+              <div class="edu-meta">Sep 2025 – Feb 2026</div>
+            </div>
           </div>
 
           <div class="edu-item">
-            <div class="edu-title">Dual MSc — Bioengineering &amp; Pharmaceutical Business (IQS)</div>
-            <div class="edu-meta">2023 – 2025</div>
+            <img class="edu-logo" src="./assets/logo-iqs.png" alt="IQS logo">
+            <div>
+              <div class="edu-title">Dual MSc — Bioengineering &amp; Pharmaceutical Business (IQS)</div>
+              <div class="edu-meta">2023 – 2025</div>
+            </div>
           </div>
 
           <div class="edu-item">
-            <div class="edu-title">BSc — Medical Biotechnology (University of Milan)</div>
-            <div class="edu-meta">2020 – 2023</div>
+            <img class="edu-logo" src="./assets/logo-unimi.png" alt="University of Milan logo">
+            <div>
+              <div class="edu-title">BSc — Medical Biotechnology (University of Milan)</div>
+              <div class="edu-meta">2020 – 2023</div>
+            </div>
+          </div>
+
+          <div class="edu-item">
+            <img class="edu-logo" src="./assets/logo-udl.png" alt="Universitat de Lleida logo">
+            <div>
+              <div class="edu-title">Erasmus — Universitat de Lleida</div>
+              <div class="edu-meta">During BSc (University of Milan)</div>
+            </div>
           </div>
         </div>
 
@@ -843,7 +1083,6 @@ sections.forEach(section => observer.observe(section));
         <div class="card">
           <div class="kicker" style="margin-bottom:.4rem;">Skills</div>
 
-          <!-- CHANGE: skill chips -->
           <div class="chip-row">
             <span class="chip">Healthcare &amp; Biotech</span>
             <span class="chip">Strategy &amp; Innovation</span>
@@ -860,14 +1099,20 @@ sections.forEach(section => observer.observe(section));
             <span class="chip">French (B1)</span>
             <span class="chip">Spanish (Basic)</span>
           </div>
+
+          <div class="kicker" style="margin-top:1.25rem;">Links</div>
+          <div class="chip-row">
+            <a class="chip" href="https://www.linkedin.com/in/francesco-cerni/" target="_blank" rel="noreferrer" style="text-decoration:none; color:var(--secondary);">LinkedIn</a>
+            <a class="chip" href="https://linktr.ee/Fracerni7" target="_blank" rel="noreferrer" style="text-decoration:none; color:var(--secondary);">Portfolio</a>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- =========================================================
-    7) CONTACT SECTION
-    - Simple, clean CTAs
+    CONTACT
+    - All LinkedIn buttons use your link
   ========================================================== -->
   <section class="section" id="contact">
     <div class="container">
@@ -875,40 +1120,152 @@ sections.forEach(section => observer.observe(section));
         <div class="kicker">Contact</div>
         <h2>Let’s build something meaningful.</h2>
 
-        <!-- CHANGE: contact paragraph -->
         <p>
-          I’m always happy to meet people working on healthcare innovation, biotech, and early-stage ventures.
-          If you want to connect, feel free to reach out.
+          If you’re working on healthcare innovation, biotech, or early-stage ventures and want to connect,
+          I’d love to chat.
         </p>
 
         <div class="contact-actions">
-          <!-- CHANGE: email -->
           <a class="contact-link" href="mailto:francescocerni7@gmail.com">Email</a>
-          <!-- CHANGE: LinkedIn -->
-          <a class="contact-link" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
-          <!-- CHANGE: portfolio -->
-          <a class="contact-link" href="https://linktr.ee/" target="_blank" rel="noreferrer">Portfolio</a>
+          <a class="contact-link" href="https://www.linkedin.com/in/francesco-cerni/" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a class="contact-link" href="https://linktr.ee/Fracerni7" target="_blank" rel="noreferrer">Portfolio</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- =========================================================
-    8) FOOTER
-    - Edit year + links
-  ========================================================== -->
   <footer>
-    <p>&copy; 2026 Francesco Cerni · One-page portfolio.</p>
+    <p>&copy; 2026 Francesco Cerni · Built as a one-page portfolio.</p>
   </footer>
 
-  <!-- =========================================================
-    OPTIONAL: Small JS (only if you want)
-    - For example: set current year automatically
-  ========================================================== -->
   <script>
-    // Example: auto-update year in footer (optional)
-    // const y = new Date().getFullYear();
-    // document.querySelector("footer p").innerHTML = `&copy; ${y} Francesco Cerni · Built as a one-page portfolio.`;
+    /* =========================================================
+      1) HEADER: mobile menu + active link on scroll
+    ========================================================== */
+    const menuBtn = document.querySelector('.menu-btn');
+    const mobileMenu = document.querySelector('.mobile-menu');
+
+    if (menuBtn && mobileMenu) {
+      menuBtn.addEventListener('click', () => {
+        const isOpen = mobileMenu.classList.toggle('open');
+        menuBtn.setAttribute('aria-expanded', String(isOpen));
+        mobileMenu.setAttribute('aria-hidden', String(!isOpen));
+      });
+
+      mobileMenu.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => {
+          mobileMenu.classList.remove('open');
+          menuBtn.setAttribute('aria-expanded', 'false');
+          mobileMenu.setAttribute('aria-hidden', 'true');
+        });
+      });
+    }
+
+    // Active link on scroll
+    const sectionIds = ['about','experience','projects','education','contact'];
+    const sections = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    function setActive(id){
+      navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === `#${id}`));
+    }
+
+    const navObserver = new IntersectionObserver((entries) => {
+      const visible = entries
+        .filter(e => e.isIntersecting)
+        .sort((a,b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (visible?.target?.id) setActive(visible.target.id);
+    }, { threshold:[0.25,0.4,0.6] });
+
+    sections.forEach(s => navObserver.observe(s));
+
+    /* =========================================================
+      2) HERO CAROUSEL (3 images + captions + prev/next loop)
+      - Uses assets:
+        Io.jpg, calcio.jpg, stunnatell.jpg
+    ========================================================== */
+    (function () {
+      const img = document.getElementById("heroCarouselImg");
+      const caption = document.getElementById("heroCarouselCaption");
+      const next = document.getElementById("heroCarouselNext");
+      const prev = document.getElementById("heroCarouselPrev");
+
+      if (!img || !caption || !next || !prev) return;
+
+      const slides = [
+        { src: "./assets/Io.jpg", text: "At the stadium — football has always been part of my life." },
+        { src: "./assets/calcio.jpg", text: "On the pitch — teamwork, discipline, and competitive mindset." },
+        { src: "./assets/stunnatell.jpg", text: "STN TELL — podcast on innovation, startups, and entrepreneurship." }
+      ];
+
+      let i = 0;
+
+      function show(index){
+        img.style.opacity = "0";
+        caption.classList.add("is-fading");
+
+        setTimeout(() => {
+          img.src = slides[index].src;
+          caption.textContent = slides[index].text;
+
+          img.style.opacity = "1";
+          caption.classList.remove("is-fading");
+        }, 180);
+      }
+
+      next.addEventListener("click", () => {
+        i = (i + 1) % slides.length;
+        show(i);
+      });
+
+      prev.addEventListener("click", () => {
+        i = (i - 1 + slides.length) % slides.length;
+        show(i);
+      });
+
+      show(i);
+    })();
+
+    /* =========================================================
+      3) EXPERIENCE TIMELINE (click logo -> scroll to card)
+    ========================================================== */
+    (function () {
+      const items = document.querySelectorAll('.time-item');
+      if (!items.length) return;
+
+      function activate(btn){
+        items.forEach(i => i.classList.toggle('active', i === btn));
+      }
+
+      items.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const id = btn.getAttribute('data-target');
+          const el = document.getElementById(id);
+          if (el) {
+            el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            activate(btn);
+          }
+        });
+      });
+
+      // Auto-highlight based on scroll
+      const expCards = ['exp-scar','exp-cnr','exp-fidia','exp-sanofi']
+        .map(id => document.getElementById(id))
+        .filter(Boolean);
+
+      const expObs = new IntersectionObserver((entries) => {
+        const best = entries
+          .filter(e => e.isIntersecting)
+          .sort((a,b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (!best?.target?.id) return;
+
+        const activeId = best.target.id;
+        const btn = Array.from(items).find(b => b.getAttribute('data-target') === activeId);
+        if (btn) activate(btn);
+      }, { threshold:[0.35,0.5,0.65] });
+
+      expCards.forEach(c => expObs.observe(c));
+    })();
   </script>
 </body>
 </html>
