@@ -1,23 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- =========================================================
-    HEAD / META
-  ========================================================== -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Francesco Cerni | Healthcare Innovation & Startups</title>
   <meta name="description" content="Francesco Cerni — Healthcare innovation, biotech, and startups. Pharma experience, early-stage investing, and entrepreneurship." />
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital@0;1&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
-    /* =========================================================
-      GLOBAL STYLES / THEME
-    ========================================================== */
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root{
@@ -44,7 +37,6 @@
       font-size:16px;
     }
 
-    /* Utility */
     .container{ max-width: var(--maxw); margin: 0 auto; padding: 0 2rem; }
     .section{ padding: 5rem 0; position: relative; }
     .section.alt{ background: var(--light); }
@@ -63,10 +55,8 @@
       margin-bottom: 1.25rem;
     }
     p{ color: var(--secondary); }
-
     section{ scroll-margin-top: 92px; }
 
-    /* Buttons */
     .btn{
       display:inline-block;
       padding: .75rem 1.25rem;
@@ -85,9 +75,9 @@
     .btn.ghost{ background: transparent; color: var(--primary); }
     .btn.ghost:hover{ background: var(--primary); color:#fff; }
 
-    /* =========================================================
-      HEADER / NAV (NO LOGO IMAGE)
-    ========================================================== */
+    /* =========================
+      HEADER / NAV
+    ========================= */
     header{
       position: fixed;
       top: 0; width: 100%;
@@ -107,8 +97,6 @@
       gap: 1rem;
     }
     .logo{
-      display:flex;
-      align-items:center;
       text-decoration:none;
       color: var(--primary);
     }
@@ -119,7 +107,6 @@
       letter-spacing:-.5px;
       line-height:1;
     }
-
     .nav-links{
       list-style:none;
       display:flex;
@@ -136,14 +123,12 @@
       transition: color .25s ease;
     }
     .nav-links a:hover{ color: var(--accent); }
-
     .nav-cta{
       display:flex;
       gap:.75rem;
       align-items:center;
     }
 
-    /* Mobile menu */
     .menu-btn{
       display:none;
       background: transparent;
@@ -174,7 +159,6 @@
       font-size: .92rem;
     }
     .mobile-menu a:hover{ color: var(--accent); }
-
     .nav-link.active{ color: var(--accent); }
 
     @media (max-width: 900px){
@@ -183,9 +167,9 @@
       .mobile-menu.open{ display:block; }
     }
 
-    /* =========================================================
-      HERO (TEXT CENTERED + CAROUSEL)
-    ========================================================== */
+    /* =========================
+      HERO (centered + carousel)
+    ========================= */
     .hero-wrap{
       margin-top: 82px;
       background: linear-gradient(135deg, #fafaf8 0%, #f5f5f5 100%);
@@ -247,7 +231,6 @@
       margin-top: 1.2rem;
     }
     .hero-carousel-frame{ position: relative; }
-
     .hero-carousel-img{
       width: 100%;
       height: 420px;
@@ -272,7 +255,7 @@
       align-items: center;
       justify-content: center;
       transition: all .2s ease;
-      opacity: .88;
+      opacity: .9;
       user-select: none;
     }
     .hero-carousel-arrow:hover{
@@ -301,13 +284,10 @@
       .hero-carousel-img{ height: 340px; }
     }
 
-    /* =========================================================
-      ABOUT (biotech background image)
-      IMPORTANT: your file is "bg.dna.jpg" in ROOT
-    ========================================================== */
-    .about-bg{
-      overflow: hidden;
-    }
+    /* =========================
+      ABOUT (bg image)
+    ========================= */
+    .about-bg{ overflow: hidden; }
     .about-bg::before{
       content:"";
       position:absolute;
@@ -336,7 +316,6 @@
       box-shadow: 0 6px 18px rgba(0,0,0,.06);
       padding: 1.6rem;
     }
-
     .list{
       list-style:none;
       padding-left:0;
@@ -359,14 +338,13 @@
       margin-top: 2px;
       color: var(--accent);
     }
-
     @media (max-width: 900px){
       .about-grid{ grid-template-columns: 1fr; }
     }
 
-    /* =========================================================
-      EXPERIENCE (logos fixed to YOUR filenames in ROOT)
-    ========================================================== */
+    /* =========================
+      EXPERIENCE (logos in root)
+    ========================= */
     .timeline-row{
       display:flex;
       flex-wrap:wrap;
@@ -395,10 +373,7 @@
       letter-spacing: .4px;
       user-select:none;
     }
-    .time-item:hover{
-      transform: translateY(-1px);
-      border-color: rgba(0,0,0,.20);
-    }
+    .time-item:hover{ transform: translateY(-1px); border-color: rgba(0,0,0,.20); }
     .time-item.active{
       border-color: rgba(212,175,55,.7);
       box-shadow: 0 8px 18px rgba(212,175,55,.18);
@@ -410,10 +385,7 @@
       object-fit: contain;
       background: #fff;
     }
-    .time-year{
-      color: var(--secondary);
-      font-weight: 800;
-    }
+    .time-year{ color: var(--secondary); font-weight: 800; }
 
     .timeline{
       display:flex;
@@ -457,10 +429,7 @@
       letter-spacing: -.3px;
       line-height: 1.15;
     }
-    .company{
-      font-weight: 900;
-      color: var(--primary);
-    }
+    .company{ font-weight: 900; color: var(--primary); }
     .meta{
       font-size: .9rem;
       color: var(--secondary);
@@ -474,9 +443,9 @@
     }
     .bullets li{ margin-bottom: .55rem; line-height: 1.75; }
 
-    /* =========================================================
+    /* =========================
       PROJECTS
-    ========================================================== */
+    ========================= */
     .grid{
       display:grid;
       grid-template-columns: repeat(2, 1fr);
@@ -505,8 +474,7 @@
       position: relative;
       overflow: hidden;
     }
-    .project img,
-    .project video{
+    .project img, .project video{
       width:100%;
       height: 100%;
       object-fit: cover;
@@ -556,15 +524,13 @@
       align-items:center;
     }
     .project a.project-link:hover{ text-decoration: underline; }
-
     @media (max-width: 900px){
       .grid{ grid-template-columns: 1fr; }
     }
 
-    /* =========================================================
-      EDUCATION + SKILLS (logos in ROOT)
-      imperial.png, IQS.png, Unimi.png, Udl.png
-    ========================================================== */
+    /* =========================
+      EDUCATION (logos in root)
+    ========================= */
     .two-col{
       display:grid;
       grid-template-columns: 1fr 1fr;
@@ -608,9 +574,9 @@
       background: rgba(255,255,255,.75);
     }
 
-    /* =========================================================
-      CONTACT
-    ========================================================== */
+    /* =========================
+      CONTACT + FOOTER
+    ========================= */
     .contact{
       text-align:center;
       max-width: 760px;
@@ -640,10 +606,7 @@
       transition: all .25s ease;
       background: #fff;
     }
-    .contact-link:hover{
-      background: var(--primary);
-      color:#fff;
-    }
+    .contact-link:hover{ background: var(--primary); color:#fff; }
 
     footer{
       background: var(--primary);
@@ -653,15 +616,13 @@
       font-size: .85rem;
       letter-spacing:.5px;
     }
-    footer a{ color: var(--accent); text-decoration:none; }
-    footer a:hover{ text-decoration: underline; }
   </style>
 </head>
 
 <body>
-  <!-- =========================================================
+  <!-- =========================
     HEADER
-  ========================================================== -->
+  ========================= -->
   <header>
     <nav>
       <a class="logo" href="#top" aria-label="Go to top">
@@ -694,13 +655,12 @@
 
   <div id="top"></div>
 
-  <!-- =========================================================
-    HERO (carousel uses your ROOT images: hero-1/2/3.jpg)
-  ========================================================== -->
+  <!-- =========================
+    HERO (carousel uses hero-1.jpg hero-2.jpg hero-3.jpg in ROOT)
+  ========================= -->
   <section class="hero-wrap">
     <div class="container">
       <div class="hero">
-
         <div>
           <h1>Hi, I’m Francesco Cerni.</h1>
 
@@ -737,12 +697,13 @@
               src="./hero-1.jpg"
               alt="Francesco Cerni photo"
             />
+
             <button class="hero-carousel-arrow prev" type="button" aria-label="Previous photo" id="heroCarouselPrev">❮</button>
             <button class="hero-carousel-arrow next" type="button" aria-label="Next photo" id="heroCarouselNext">❯</button>
           </div>
 
           <div class="hero-caption" id="heroCarouselCaption">
-            At the stadium — football has always been part of my life.
+            Healthcare, startups, and building energy — one step at a time.
           </div>
         </div>
 
@@ -750,9 +711,9 @@
     </div>
   </section>
 
-  <!-- =========================================================
-    ABOUT (background uses bg.dna.jpg in ROOT)
-  ========================================================== -->
+  <!-- =========================
+    ABOUT (bg.dna.jpg in ROOT)
+  ========================= -->
   <section class="section about-bg" id="about">
     <div class="container">
       <div class="kicker">About</div>
@@ -765,7 +726,7 @@
             I like working across disciplines — where scientific depth meets execution and real-world outcomes.
           </p>
           <p>
-            I’ve gained experience in the pharmaceutical industry at <strong>Sanofi</strong> and <strong>Fidia Farmaceutici</strong>,
+            I’ve gained experience in pharma at <strong>Sanofi</strong> and <strong>Fidia Farmaceutici</strong>,
             and I enjoy turning complex topics into something actionable — from strategy to practical delivery.
           </p>
           <p>
@@ -813,10 +774,11 @@
     </div>
   </section>
 
-  <!-- =========================================================
-    EXPERIENCE (uses your ROOT logos: logo-sanofi.png, fidia.png)
-    NOTE: if you don't have cnr/scar logos yet, those buttons are text-only.
-  ========================================================== -->
+  <!-- =========================
+    EXPERIENCE (logos in ROOT)
+    - logo-sanofi.png, fidia.png
+    - cnr.png (se non ce l’hai ancora: caricalo con questo nome o dimmelo e lo cambiamo)
+  ========================= -->
   <section class="section alt" id="experience">
     <div class="container">
       <div class="kicker">Experience</div>
@@ -828,6 +790,7 @@
         </button>
 
         <button class="time-item" data-target="exp-cnr" type="button">
+          <img class="time-logo" src="./cnr.png" alt="CNR logo">
           <span class="time-year">2023</span> CNR
         </button>
 
@@ -846,7 +809,6 @@
         <div class="timeline-item" id="exp-scar">
           <div class="role-top">
             <div class="role-left">
-              <div class="company-logo" style="display:flex;align-items:center;justify-content:center;font-weight:900;">SC</div>
               <div>
                 <div class="role"><span class="company">SCAR Holding</span> — Founder</div>
                 <div class="meta">Dec 2019 – Present</div>
@@ -862,7 +824,7 @@
         <div class="timeline-item" id="exp-cnr">
           <div class="role-top">
             <div class="role-left">
-              <div class="company-logo" style="display:flex;align-items:center;justify-content:center;font-weight:900;">CNR</div>
+              <img class="company-logo" src="./cnr.png" alt="CNR logo">
               <div>
                 <div class="role"><span class="company">CNR</span> — Research Experience</div>
                 <div class="meta">2023 · Italy</div>
@@ -907,14 +869,13 @@
             <li>Collaborated cross-functionally with stakeholders and teams.</li>
           </ul>
         </div>
-
       </div>
     </div>
   </section>
 
-  <!-- =========================================================
-    PROJECTS (pandora.mp4 is in ROOT)
-  ========================================================== -->
+  <!-- =========================
+    PROJECTS (pandora.mp4 in ROOT)
+  ========================= -->
   <section class="section" id="projects">
     <div class="container">
       <div class="kicker">Projects</div>
@@ -927,9 +888,7 @@
           </div>
           <div class="project-body">
             <div class="project-title">Pandora Project</div>
-            <p>
-              A project where I explored how technology and product thinking can support better decisions and real-world execution.
-            </p>
+            <p>A project where I explored how technology and product thinking can support better decisions and real-world execution.</p>
             <div class="tags">
               <span class="tag">Product</span>
               <span class="tag">Innovation</span>
@@ -945,9 +904,7 @@
           </div>
           <div class="project-body">
             <div class="project-title">Stunnatell Podcast</div>
-            <p>
-              Conversations about startups, innovation, and entrepreneurship — with a practical, builder mindset.
-            </p>
+            <p>Conversations about startups, innovation, and entrepreneurship — with a practical, builder mindset.</p>
             <div class="tags">
               <span class="tag">Podcast</span>
               <span class="tag">Startups</span>
@@ -963,9 +920,7 @@
           </div>
           <div class="project-body">
             <div class="project-title">Finalist — Startup Challenge</div>
-            <p>
-              Finalist project focused on building a clear product story, demo, and strong user value.
-            </p>
+            <p>Finalist project focused on building a clear product story, demo, and strong user value.</p>
             <div class="tags">
               <span class="tag">Demo</span>
               <span class="tag">Pitch</span>
@@ -981,9 +936,7 @@
           </div>
           <div class="project-body">
             <div class="project-title">AI Startup Location Assistant</div>
-            <p>
-              An AI tool to compare regulations and signals across countries — helping decide where it’s best to launch a startup.
-            </p>
+            <p>An AI tool to compare regulations and signals across countries — helping decide where it’s best to launch a startup.</p>
             <div class="tags">
               <span class="tag">AI</span>
               <span class="tag">Regulations</span>
@@ -996,9 +949,10 @@
     </div>
   </section>
 
-  <!-- =========================================================
+  <!-- =========================
     EDUCATION (logos in ROOT)
-  ========================================================== -->
+    imperial.png, IQS.png, Unimi.png, Udl.png
+  ========================= -->
   <section class="section alt" id="education">
     <div class="container">
       <div class="kicker">Education & Skills</div>
@@ -1071,9 +1025,9 @@
     </div>
   </section>
 
-  <!-- =========================================================
+  <!-- =========================
     CONTACT
-  ========================================================== -->
+  ========================= -->
   <section class="section" id="contact">
     <div class="container">
       <div class="contact">
@@ -1099,9 +1053,7 @@
   </footer>
 
   <script>
-    /* =========================================================
-      1) HEADER: mobile menu + active link on scroll
-    ========================================================== */
+    /* 1) Mobile menu */
     const menuBtn = document.querySelector('.menu-btn');
     const mobileMenu = document.querySelector('.mobile-menu');
 
@@ -1121,38 +1073,18 @@
       });
     }
 
-    const sectionIds = ['about','experience','projects','education','contact'];
-    const sections = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
-    const navLinks = document.querySelectorAll('.nav-link');
-
-    function setActive(id){
-      navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === `#${id}`));
-    }
-
-    const navObserver = new IntersectionObserver((entries) => {
-      const visible = entries
-        .filter(e => e.isIntersecting)
-        .sort((a,b) => b.intersectionRatio - a.intersectionRatio)[0];
-      if (visible?.target?.id) setActive(visible.target.id);
-    }, { threshold:[0.25,0.4,0.6] });
-
-    sections.forEach(s => navObserver.observe(s));
-
-    /* =========================================================
-      2) HERO CAROUSEL (uses ROOT images: hero-1/2/3.jpg)
-    ========================================================== */
+    /* 2) HERO CAROUSEL (root files) */
     (function () {
       const img = document.getElementById("heroCarouselImg");
       const caption = document.getElementById("heroCarouselCaption");
       const next = document.getElementById("heroCarouselNext");
       const prev = document.getElementById("heroCarouselPrev");
-
       if (!img || !caption || !next || !prev) return;
 
       const slides = [
-        { src: "./hero-1.jpg", text: "At the stadium — football has always been part of my life." },
-        { src: "./hero-2.jpg", text: "On the pitch — teamwork, discipline, and competitive mindset." },
-        { src: "./hero-3.jpg", text: "STN TELL — podcast on innovation, startups, and entrepreneurship." }
+        { src: "./hero-1.jpg", text: "Healthcare, startups, and building energy — one step at a time." },
+        { src: "./hero-2.jpg", text: "On the move — curiosity, discipline, and a growth mindset." },
+        { src: "./hero-3.jpg", text: "Creating & sharing — entrepreneurship, innovation, and conversations." }
       ];
 
       let i = 0;
@@ -1164,28 +1096,18 @@
         setTimeout(() => {
           img.src = slides[index].src;
           caption.textContent = slides[index].text;
-
           img.style.opacity = "1";
           caption.classList.remove("is-fading");
         }, 180);
       }
 
-      next.addEventListener("click", () => {
-        i = (i + 1) % slides.length;
-        show(i);
-      });
-
-      prev.addEventListener("click", () => {
-        i = (i - 1 + slides.length) % slides.length;
-        show(i);
-      });
+      next.addEventListener("click", () => { i = (i + 1) % slides.length; show(i); });
+      prev.addEventListener("click", () => { i = (i - 1 + slides.length) % slides.length; show(i); });
 
       show(i);
     })();
 
-    /* =========================================================
-      3) EXPERIENCE TIMELINE (click -> scroll to card)
-    ========================================================== */
+    /* 3) EXPERIENCE timeline click -> scroll */
     (function () {
       const items = document.querySelectorAll('.time-item');
       if (!items.length) return;
@@ -1204,23 +1126,6 @@
           }
         });
       });
-
-      const expCards = ['exp-scar','exp-cnr','exp-fidia','exp-sanofi']
-        .map(id => document.getElementById(id))
-        .filter(Boolean);
-
-      const expObs = new IntersectionObserver((entries) => {
-        const best = entries
-          .filter(e => e.isIntersecting)
-          .sort((a,b) => b.intersectionRatio - a.intersectionRatio)[0];
-        if (!best?.target?.id) return;
-
-        const activeId = best.target.id;
-        const btn = Array.from(items).find(b => b.getAttribute('data-target') === activeId);
-        if (btn) activate(btn);
-      }, { threshold:[0.35,0.5,0.65] });
-
-      expCards.forEach(c => expObs.observe(c));
     })();
   </script>
 </body>
